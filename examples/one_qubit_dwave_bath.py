@@ -26,8 +26,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from seaqt import bath_dissipator, entropy, evolve, free_energy, gibbs_state  # noqa: E402
+from seaqt import bath_dissipator, entropy, evolve, free_energy, gibbs_state, population_distribution  # noqa: E402
 from seaqt.dwave import beta_from_kelvin, hamiltonian_1qubit, load_schedule  # noqa: E402
+from seaqt.operators import basis_labels  # noqa: E402
 
 DEFAULT_SCHEDULE = (
     r"C:\Users\andre\OneDrive\Documentos\Maestría\Julich\codigos"
@@ -46,7 +47,8 @@ def run(hamiltonian, t_anneal, tau, beta, n_points=400):
     p0 = np.array([np.real(r[0, 0]) for r in res.rho])
     ent = np.array([entropy(r) for r in res.rho])
     omega = np.array([free_energy(r, hamiltonian(t), beta) for t, r in zip(res.t, res.rho)])
-    return res.t, p0, ent, omega
+    final_dist = population_distribution(res.rho[-1])
+    return res.t, p0, ent, omega, final_dist
 
 
 def main():
@@ -81,14 +83,17 @@ def main():
     taus = list(args.tau) + [np.inf]
     labels = {t: (f"tau = {t}" if np.isfinite(t) else "tau = inf (unitary only)") for t in taus}
 
+    labels_bits = basis_labels(1)
     fig, axes = plt.subplots(1, 3, figsize=(15, 4.5))
     print(f"\n{'tau':>25} | {'P(|0>) final':>14} | {'entropy final':>14} | {'Omega final':>12}")
     for tau in taus:
-        t, p0, ent, omega = run(H, args.t_anneal, tau, beta)
+        t, p0, ent, omega, final_dist = run(H, args.t_anneal, tau, beta)
         axes[0].plot(t, p0, label=labels[tau])
         axes[1].plot(t, ent, label=labels[tau])
         axes[2].plot(t, omega, label=labels[tau])
         print(f"{labels[tau]:>25} | {p0[-1]:14.4f} | {ent[-1]:14.4f} | {omega[-1]:12.4f}")
+        print("    final distribution: " + ", ".join(
+            f"P({lbl})={p:.4f}" for lbl, p in zip(labels_bits, final_dist)))
 
     # Gibbs-state free energy at the final Hamiltonian, for reference
     h_final = H(args.t_anneal)

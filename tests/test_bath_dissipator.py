@@ -1,11 +1,8 @@
-"""Physics sanity checks for the bath (Gibbs-relaxation) dissipator.
-
-Mirrors tests/test_core.py's rigor for `sea_dissipator`, but for
-`bath_dissipator`: the invariant it must satisfy is not "entropy increases
-at fixed energy" but "free energy Omega = <H> - S/beta decreases toward
-its minimum at the Gibbs state exp(-beta H)/Z", since this dissipator
-models relaxation toward a fixed-temperature bath rather than an isolated
-microcanonical system.
+"""Physics sanity checks for the bath (Gibbs-relaxation) dissipator: trace
+conservation, positivity, and that the free energy
+Omega = <H> - S/beta decreases monotonically toward its minimum at the
+Gibbs state exp(-beta H)/Z. See tests/test_two_qubit.py for the same
+checks on a genuine 2-qubit Hamiltonian.
 """
 import numpy as np
 import pytest
@@ -86,9 +83,10 @@ def test_free_energy_decreases_monotonically_toward_gibbs_state():
     assert np.max(np.abs(res.rho[-1] - rho_eq)) < 1e-2
 
 
-def test_tau_or_dissipator_none_means_unitary_only():
-    """evolve() with neither tau nor dissipator (default tau=inf) should
-    reduce to plain unitary evolution -- sanity check on the refactor."""
+def test_dissipator_none_means_unitary_only():
+    """evolve() with no dissipator should reduce to plain unitary evolution
+    -- checked against the exact analytic Rabi oscillation formula for
+    H = (Omega/2) sigma_x, Omega = 1."""
     rho0 = np.array([[1, 0], [0, 0]], dtype=complex)
     h_rabi = 0.5 * sx
     res = evolve(rho0, hamiltonian=lambda t: h_rabi, t_span=(0, 10), n_points=100)

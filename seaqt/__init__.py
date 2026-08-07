@@ -10,8 +10,7 @@ from .core import (
     hermitize,
     inner,
     matrix_log,
-    rho_log_rho,
-    sea_dissipator,
+    population_distribution,
 )
 
 __all__ = [
@@ -26,6 +25,5 @@ __all__ = [
     "hermitize",
     "inner",
     "matrix_log",
-    "rho_log_rho",
-    "sea_dissipator",
+    "population_distribution",
 ]

@@ -3,9 +3,9 @@
 Qubit 0 is the leftmost factor in the tensor product (standard convention):
 for n=2, sx(0,2) = sigma_x (x) I, sx(1,2) = I (x) sigma_x.
 
-Everything in seaqt/core.py (sea_dissipator, bath_dissipator, evolve) only
-assumes a square Hermitian Hamiltonian of whatever dimension -- these
-helpers just build that Hamiltonian for n qubits instead of 1.
+Everything in seaqt/core.py (bath_dissipator, evolve) only assumes a
+square Hermitian Hamiltonian of whatever dimension -- these helpers just
+build that Hamiltonian for n qubits instead of 1.
 """
 from __future__ import annotations
 
@@ -32,6 +32,15 @@ def op_on(op: np.ndarray, i: int, n: int) -> np.ndarray:
     mats = [I2] * n
     mats[i] = op
     return _kron_all(mats)
+
+
+def basis_labels(n: int) -> list[str]:
+    """['|00...0>', ..., '|11...1>'] for an n-qubit register, in the same
+    index order as `ising_hamiltonian`/`op_on` (qubit 0 = leftmost /
+    most-significant bit) -- matches `seaqt.core.population_distribution`'s
+    index convention, so `dict(zip(basis_labels(n), population_distribution(rho)))`
+    gives a labeled bitstring -> probability distribution."""
+    return [f"|{i:0{n}b}>" for i in range(2**n)]
 
 
 def sx(i: int, n: int) -> np.ndarray:

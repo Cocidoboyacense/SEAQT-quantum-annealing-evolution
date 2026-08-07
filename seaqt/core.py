@@ -1,33 +1,34 @@
 """
-Core SEAQT (Steepest-Entropy-Ascent Quantum Thermodynamics) dynamics for
-finite-dimensional, energetically isolated quantum systems.
+Core density-matrix dynamics for a finite-dimensional quantum system
+coupled to a fixed-temperature bath.
 
 Equation of motion for the density operator rho(t):
 
-    drho/dt = -i/hbar [H(t), rho] + (1/tau) * D(rho, H(t))
+    drho/dt = -i/hbar [H(t), rho] + (dissipative term)
 
 - The first (unitary) term is the usual Schrodinger/von Neumann evolution
   under the (possibly time-dependent) system Hamiltonian H(t).
-- D is the steepest-entropy-ascent dissipator: at fixed rho and H, it is
-  the direction of steepest increase of the von Neumann entropy
-  S(rho) = -Tr(rho ln rho), restricted to the subspace of Hermitian,
-  traceless operators that are also orthogonal to H in the trace inner
-  product. That restriction is exactly what is needed to leave the two
-  conserved quantities of an isolated system unchanged instant-by-instant:
-  probability (Tr rho = 1) and energy (Tr[H rho], when H is static).
-- tau > 0 is a relaxation time that sets how fast the system moves toward
-  the (instantaneous) maximum-entropy state consistent with its current
-  energy. tau -> infinity recovers ordinary closed-system (Schrodinger)
-  dynamics; small tau means fast thermalization/dephasing relative to the
-  drive.
+- The dissipative term, `bath_dissipator`, relaxes rho toward the Gibbs
+  (canonical) equilibrium state exp(-beta H)/Z at a fixed bath inverse
+  temperature beta, at a rate set by relaxation time tau:
 
-This closed-form dissipator (a ratio of "Gram-determinant" operators built
-from {rho, rho*ln(rho), (1/2){rho,H}}) is the standard result for a system
-with exactly one non-trivial conserved observable, H. See:
+    drho/dt |_diss = -(beta / (2 tau)) * {F(rho, H, beta), rho}
+    F(rho, H, beta) = (H - <H>_rho I) - (1/beta) (S_op - <S_op>_rho I),  S_op = -ln(rho)
 
-  G. P. Beretta, "Steepest entropy ascent model for far-from-equilibrium
-  thermodynamics: Unified implementation of the maximum entropy production
-  principle", Phys. Rev. E 90, 042113 (2014).
+  F is a generalized free-energy fluctuation operator. Both bracketed
+  terms are "fluctuation operators" (Op - <Op>_rho I), which always have
+  zero expectation value in the state rho they were built from:
+  Tr[(Op - <Op>_rho I) rho] = <Op>_rho - <Op>_rho = 0. That is what
+  guarantees Tr(drho/dt|_diss) = 0 exactly (normalization is preserved),
+  with no extra projection step needed. Its 2nd-law equivalent is that the
+  free energy Omega(rho) = <H>_rho - S(rho)/beta decreases monotonically
+  toward its minimum at the Gibbs state -- checked numerically in
+  tests/test_bath_dissipator.py and tests/test_two_qubit.py (trace,
+  positivity, and convergence to `gibbs_state(H, beta)`).
+
+`evolve()` is a generic solve_ivp-based integrator that works for any
+finite Hilbert-space dimension -- see seaqt/operators.py for building
+N-qubit Hamiltonians and seaqt/dwave.py for the real D-Wave QPU schedule.
 
 Units: hbar = 1 throughout (energies and 1/tau share the same units as
 angular frequency).
@@ -58,15 +59,6 @@ def eig_hermitian(rho: Operator):
     return p, u
 
 
-def rho_log_rho(rho: Operator) -> Operator:
-    """Compute rho @ logm(rho) via eigendecomposition, with the convention
-    0 * ln(0) = 0 (the limiting value, since x ln x -> 0 as x -> 0+)."""
-    p, u = eig_hermitian(rho)
-    with np.errstate(divide="ignore", invalid="ignore"):
-        plogp = np.where(p > _TOL, p * np.log(p), 0.0)
-    return u @ np.diag(plogp) @ u.conj().T
-
-
 def entropy(rho: Operator) -> float:
     """Von Neumann entropy S = -Tr(rho ln rho), in nats."""
     p, _ = eig_hermitian(rho)
@@ -85,13 +77,27 @@ def energy(rho: Operator, h: Operator) -> float:
     return expect(rho, h)
 
 
+def population_distribution(rho: Operator) -> np.ndarray:
+    """Diagonal populations of rho, in whatever basis it's expressed.
+
+    For the Hamiltonians built in `seaqt.operators`/`seaqt.dwave` (Kronecker
+    products of sigma_z-diagonal single-qubit operators), rho is always
+    represented in the computational (Z) basis throughout `evolve()` -- the
+    same basis a real QPU measures in at readout -- so this is exactly the
+    quantity to compare against measured bitstring/shot statistics: a
+    length-d array of non-negative reals summing to 1, with index i
+    corresponding to the bitstring given by i's binary representation
+    (see `seaqt.operators.basis_labels`, same index convention).
+    """
+    p = np.clip(np.real(np.diag(rho)), 0.0, None)
+    total = p.sum()
+    return p / total if total > 0 else p
+
+
 def matrix_log(rho: Operator, eps: float = 1e-12) -> Operator:
-    """Plain ln(rho) via eigendecomposition, flooring eigenvalues at `eps`
-    to avoid -inf at pure states. Note this differs from `rho_log_rho`
-    above: that one computes rho @ ln(rho) with the exact 0*ln(0)=0 limit
-    (used by `sea_dissipator`); this one returns ln(rho) itself (needed by
-    `free_energy_operator` below, which needs the entropy *operator*
-    S_op = -ln(rho), not rho times it)."""
+    """ln(rho) via eigendecomposition, flooring eigenvalues at `eps` to
+    avoid -inf at pure states. Needed by `free_energy_operator`, which
+    needs the entropy *operator* S_op = -ln(rho), not a scalar."""
     p, u = eig_hermitian(rho)
     p = np.clip(p, eps, None)
     return u @ np.diag(np.log(p)) @ u.conj().T
@@ -103,62 +109,13 @@ def inner(a: Operator, b: Operator) -> float:
     return float(np.real(np.trace(a @ b)))
 
 
-def sea_dissipator(rho: Operator, h: Operator, eig_floor: float = 1e-12) -> Operator:
-    """Steepest-entropy-ascent dissipator D(rho, H) for a system whose only
-    conserved observable (besides the trace) is H.
-
-    Construction: the von Neumann entropy gradient is the Hermitian operator
-    G = -(ln(rho) + I)  (from dS = -Tr[drho (ln rho + I)]). D is the
-    orthogonal projection of G, in the flat trace inner product
-    <A,B> = Tr(A B), onto the subspace orthogonal to span{I, H}:
-
-        D = G - c1 * I - c3 * H,   chosen so that Tr(D) = 0, Tr(H D) = 0.
-
-    This guarantees, by construction and independent of rho:
-      * Tr(D) = 0                    -> normalization is preserved
-      * Tr(H D) = 0                  -> energy Tr(H rho) is preserved (H static)
-      * dS/dt = <G, D>/tau = ||D||^2/tau >= 0   -> entropy never decreases
-        (because D is the projection of G onto a subspace, <G,D> = <D,D>).
-
-    Eigenvalues of rho below `eig_floor` are clamped before taking the log,
-    which regularizes the ln(0) singularity at pure states; the dissipator
-    is then benign, but non-zero, right at the pure-state boundary.
-    """
-    rho = hermitize(rho)
-    d = rho.shape[0]
-    p, u = eig_hermitian(rho)
-    p_reg = np.clip(p, eig_floor, None)
-    ln_rho = u @ np.diag(np.log(p_reg)) @ u.conj().T
-    g = hermitize(-(ln_rho + np.eye(d, dtype=complex)))  # entropy gradient
-
-    identity = np.eye(d, dtype=complex)
-    tr_I = float(d)
-    tr_H = float(np.real(np.trace(h)))
-    tr_H2 = inner(h, h)
-    tr_G = float(np.real(np.trace(g)))
-    tr_HG = inner(h, g)
-
-    gram = np.array([[tr_I, tr_H], [tr_H, tr_H2]])
-    rhs = np.array([tr_G, tr_HG])
-    det = tr_I * tr_H2 - tr_H * tr_H
-    if abs(det) < 1e-13:
-        # H proportional to the identity: no distinguished energy direction,
-        # only the normalization constraint applies.
-        c1, c3 = tr_G / tr_I, 0.0
-    else:
-        c1, c3 = np.linalg.solve(gram, rhs)
-
-    return hermitize(g - c1 * identity - c3 * h)
-
-
 def free_energy_operator(rho: Operator, h: Operator, beta: float) -> Operator:
     """Generalized free-energy fluctuation operator
 
         F = (H - <H>_rho I) - (1/beta) (S_op - <S_op>_rho I),   S_op = -ln(rho)
 
     used by `bath_dissipator` to relax rho toward the canonical/Gibbs state
-    exp(-beta H)/Z at a fixed bath inverse temperature beta (rather than
-    toward the fixed-energy max-entropy state that `sea_dissipator` targets).
+    exp(-beta H)/Z at a fixed bath inverse temperature beta.
 
     Both bracketed terms are "fluctuation operators" (Op - <Op>_rho I), and
     a fluctuation operator always has zero expectation value in the state
@@ -186,11 +143,10 @@ def bath_dissipator(rho: Operator, h: Operator, beta: float, tau: float) -> Oper
     Tr(drho/dt|_diss) = 0 exactly, since Tr({F,rho}) = 2 Tr(F rho) and
     Tr(F rho) = 0 by the fluctuation-operator argument in
     `free_energy_operator`'s docstring -- so normalization is preserved
-    with no extra correction needed. See tests/test_bath_dissipator.py for
-    the numerical checks (trace, positivity, and monotonic decrease of the
-    free energy Omega(rho) = <H>_rho - S(rho)/beta -- the 2nd law's
-    equivalent for relaxation toward a fixed-temperature bath, as opposed
-    to `sea_dissipator`'s fixed-energy entropy increase).
+    with no extra correction needed. See tests/test_bath_dissipator.py and
+    tests/test_two_qubit.py for the numerical checks (trace, positivity,
+    and monotonic decrease of the free energy
+    Omega(rho) = <H>_rho - S(rho)/beta toward the Gibbs state).
     """
     rho = hermitize(rho)
     f_hat = free_energy_operator(rho, h, beta)
@@ -243,7 +199,7 @@ def _unpack(vec: np.ndarray, d: int) -> Operator:
 
 
 @dataclass
-class SEAQTResult:
+class EvolutionResult:
     t: np.ndarray
     rho: list  # list of dxd complex ndarrays, one per time point
 
@@ -252,13 +208,12 @@ def evolve(
     rho0: Operator,
     hamiltonian: Callable[[float], Operator],
     t_span: tuple[float, float],
-    tau: float = np.inf,
     dissipator: Callable[[float, Operator, Operator], Operator] | None = None,
     n_points: int = 400,
     hbar: float = 1.0,
     rtol: float = 1e-9,
     atol: float = 1e-11,
-) -> SEAQTResult:
+) -> EvolutionResult:
     """Integrate  drho/dt = -i/hbar [H(t), rho] + (dissipative term)  for a
     (possibly time-dependent) Hamiltonian.
 
@@ -267,28 +222,18 @@ def evolve(
     rho0 : initial density matrix (Hermitian, trace 1, positive semidefinite)
     hamiltonian : callable t -> Hermitian ndarray, the system Hamiltonian H(t)
     t_span : (t0, t1)
-    tau : relaxation time for the default (SEAQT, fixed-energy) dissipator.
-          Ignored if `dissipator` is given. tau = np.inf (default) means no
-          dissipator at all -> ordinary unitary evolution.
     dissipator : optional callable (t, rho, H) -> Hermitian ndarray, giving
           the FULL dissipative contribution to drho/dt (already scaled by
-          whatever rate constants it needs, e.g. via functools.partial or a
-          closure). When given, this replaces the default SEAQT/tau
-          dissipator entirely -- use this to plug in `bath_dissipator`
-          (relaxation toward a fixed-temperature Gibbs state) via e.g.
-          `dissipator=lambda t, rho, H: bath_dissipator(rho, H, beta, tau)`.
+          whatever rate constants it needs, e.g. via a closure). Pass
+          `dissipator=lambda t, rho, H: bath_dissipator(rho, H, beta, tau)`
+          for relaxation toward a fixed-temperature Gibbs state; omit (or
+          pass None) for ordinary unitary (closed-system) evolution.
     n_points : number of output samples (dense, evenly spaced in t)
     """
     from scipy.integrate import solve_ivp
 
     d = rho0.shape[0]
-
-    if dissipator is not None:
-        diss_fn = dissipator
-    elif np.isfinite(tau):
-        diss_fn = lambda t, rho, h: sea_dissipator(rho, h) / tau  # noqa: E731
-    else:
-        diss_fn = lambda t, rho, h: 0.0  # noqa: E731
+    diss_fn = dissipator if dissipator is not None else (lambda t, rho, h: 0.0)
 
     def rhs(t, y):
         rho = _unpack(y, d)
@@ -302,7 +247,7 @@ def evolve(
     t_eval = np.linspace(t_span[0], t_span[1], n_points)
     sol = solve_ivp(rhs, t_span, y0, t_eval=t_eval, rtol=rtol, atol=atol, method="RK45")
     if not sol.success:
-        raise RuntimeError(f"SEAQT integration failed: {sol.message}")
+        raise RuntimeError(f"Integration failed: {sol.message}")
 
     rhos = [hermitize(_unpack(sol.y[:, k], d)) for k in range(sol.y.shape[1])]
-    return SEAQTResult(t=sol.t, rho=rhos)
+    return EvolutionResult(t=sol.t, rho=rhos)

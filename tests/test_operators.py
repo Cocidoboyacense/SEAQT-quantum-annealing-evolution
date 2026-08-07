@@ -1,6 +1,8 @@
 import numpy as np
+import pytest
 
-from seaqt.operators import I2, ising_hamiltonian, sigma_x, sigma_z, sx, sy, sz
+from seaqt import population_distribution
+from seaqt.operators import I2, basis_labels, ising_hamiltonian, sigma_x, sigma_z, sx, sy, sz
 
 
 def test_single_qubit_reduces_to_bare_pauli():
@@ -52,3 +54,30 @@ def test_ising_hamiltonian_matches_hand_built_two_qubit_case():
         + B / 2 * J * np.kron(sigma_z, sigma_z)
     )
     assert np.allclose(H, expected)
+
+
+def test_basis_labels_match_kron_index_order():
+    assert basis_labels(1) == ["|0>", "|1>"]
+    assert basis_labels(2) == ["|00>", "|01>", "|10>", "|11>"]
+    assert basis_labels(3) == ["|000>", "|001>", "|010>", "|011>",
+                               "|100>", "|101>", "|110>", "|111>"]
+
+
+def test_population_distribution_matches_basis_labels_on_diagonal_state():
+    """A Hamiltonian with only sigma_z terms (A=0) is exactly diagonal in
+    the computational basis; its ground state should show up as weight 1
+    on the expected bitstring, at the expected basis_labels() index."""
+    # h=[+1,-1], no coupling, A=0 -> ground state is |01> (qubit0=+1 wants
+    # sigma_z=-1 i.e. |1>, qubit1=-1 wants sigma_z=+1 i.e. |0>... build the
+    # Hamiltonian and just check self-consistency directly instead of
+    # re-deriving the sign convention by hand):
+    H = ising_hamiltonian(2, h=[0.6, -0.4], J={(0, 1): 0.5}, A=0.0, B=1.0)
+    w, v = np.linalg.eigh(H)
+    ground_idx = int(np.argmax(np.abs(v[:, 0])))  # H is diagonal -> v[:,0] is a basis vector
+    rho_ground = np.outer(v[:, 0], v[:, 0].conj())
+
+    p = population_distribution(rho_ground)
+    assert p.sum() == pytest.approx(1.0)
+    assert p[ground_idx] == pytest.approx(1.0, abs=1e-10)
+    assert np.sum(p > 1e-10) == 1  # all weight on exactly one bitstring
+    print(f"ground state is {basis_labels(2)[ground_idx]}")  # sanity/documentation
