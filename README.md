@@ -3,6 +3,14 @@
 A from-scratch simulator for quantum annealing as an **open system**: a
 qubit register coupled to a fixed-temperature bath, driven by the real
 D-Wave QPU annealing Hamiltonian, extended from 1 to 2 coupled qubits.
+Two dissipators are implemented:
+
+1. **`bath_dissipator`** (used by `one_qubit_dwave_bath.py`) — the whole
+   composite system relaxes toward a single global Gibbs state.
+2. **`local_seaqt_dissipator`** (used by `two_qubit_dwave_bath.py`) — each
+   qubit relaxes *locally*, coupled to the other only through their
+   current reduced states (from Yamada, Kusaba, Li, von Spakovsky et al.,
+   arXiv:2404.05473v3).
 
 ## Physics
 
@@ -41,6 +49,31 @@ conservation, positivity, and convergence to `gibbs_state(H, β)`.
 
 `τ → ∞` (no dissipator passed to `evolve()`) recovers ordinary unitary
 (closed-system) annealing exactly.
+
+### Dissipative part 2: local SEAQT (2-qubit, two-reservoir)
+
+From arXiv:2404.05473v3, eqs. 6, 7, 15. Each qubit J ∈ {A, B} (A = qubit
+0, B = qubit 1) relaxes locally, coupled to the other only through
+current reduced states:
+
+```
+dρ/dt|diss = -(1/τ_A) D_A ⊗ ρ_B - (1/τ_B) ρ_A ⊗ D_B
+D_J = ρ_J ln(ρ_J) - β_R⟨f⟩_J ρ_J + (1/2)β_R{H_J, ρ_J}
+⟨f⟩_J = Tr(ρ_J H_J) + (1/β_R) Tr(ρ_J ln ρ_J)
+H_J = Tr_J̄[(I_J ⊗ ρ_J̄) H]     (the "locally perceived" Hamiltonian, eq. 12)
+```
+
+with `ρ_A = Tr_B(ρ)`, `ρ_B = Tr_A(ρ)` the ordinary reduced density
+operators. `Tr(D_J) = 0` exactly by algebraic construction (expanding
+`⟨f⟩_J` makes the two relevant terms cancel identically — see
+[`seaqt/local_seaqt.py`](seaqt/local_seaqt.py)'s docstring for the
+derivation), so the full dissipative term is traceless regardless of
+`τ_A`, `τ_B`, `β_R`, or the state. Cross-checked to machine precision
+(`~1e-16`) against a literal port of the reference implementation this was
+adapted from — see [`tests/test_local_seaqt.py`](tests/test_local_seaqt.py).
+
+**This dissipator does NOT come with a positivity-preservation guarantee**
+— see "Conventions / gotchas" below.
 
 ## Layout
 
