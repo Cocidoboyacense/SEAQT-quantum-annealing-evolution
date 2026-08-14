@@ -1,15 +1,32 @@
 """
-2-qubit D-Wave-style quantum annealing with bath-relaxation (Gibbs) dynamics.
+2-qubit D-Wave-style quantum annealing with the two-reservoir local SEAQT
+equation of motion.
 
-Same idea as one_qubit_dwave_bath.py, extended to 2 qubits with a coupling
-J_12, using the real QPU schedule A(s), B(s):
+Uses the real QPU schedule A(s), B(s):
 
     H(s) = -A(s)/2 (sx0+sx1) + B(s)/2 (h0 sz0 + h1 sz1 + J12 sz0 sz1)
 
-and the bath_dissipator relaxing toward the Gibbs state at bath inverse
-temperature beta. See the README's "Conventions / gotchas" section for why
-the initial state is a slightly-thermalized driver state rather than an
-exact pure state, and why the bias h is chosen asymmetric.
+and `local_seaqt_dissipator` (see seaqt/local_seaqt.py), from Yamada,
+Kusaba, Li, von Spakovsky et al., arXiv:2404.05473v3, eqs. 6, 7, 15: each
+qubit relaxes *locally* toward its own subsystem-level SEAQT dynamics
+(shared reservoir inverse temperature beta_R, but independently tunable
+per-qubit relaxation times tau_A, tau_B), coupled to each other only
+through their current (generally correlated) reduced states. This is a
+genuinely different dynamics from `bath_dissipator` (used in
+one_qubit_dwave_bath.py), which instead relaxes the WHOLE composite system
+toward a single global Gibbs state -- notably, the free-energy panel below
+is NOT guaranteed monotonic here the way it was for bath_dissipator (see
+the README's "Conventions / gotchas" for both dissipators' guarantees).
+
+See the README's "Conventions / gotchas" section for why the initial state
+is a slightly-thermalized driver state rather than an exact pure state,
+why the bias h is chosen asymmetric, and why the default tau values below
+are >= 10 ns: eq. 15 is derived as an approximation (valid when the
+"reservoir" dominates over the local "system" in size) and does not come
+with a positivity-preservation proof -- empirically, tau much smaller than
+that (strong dissipation) can drive rho to small negative eigenvalues for
+this schedule. See seaqt/local_seaqt.py's module docstring for the full
+finding.
 
 The final-state bar chart (last panel) is exactly the quantity to compare
 against measured bitstring/shot statistics from real hardware: rho is
@@ -29,13 +46,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from seaqt import bath_dissipator, entropy, evolve, free_energy, gibbs_state, population_distribution  # noqa: E402
+from seaqt import entropy, evolve, free_energy, gibbs_state, population_distribution  # noqa: E402
+from seaqt.local_seaqt import local_seaqt_dissipator  # noqa: E402
 from seaqt.dwave import beta_from_kelvin, hamiltonian_nqubit, load_schedule  # noqa: E402
 from seaqt.operators import basis_labels  # noqa: E402
 
 DEFAULT_SCHEDULE = (
-    r"C:\Users\andre\OneDrive\Documentos\Maestría\Julich\codigos"
-    r"\09-1265A-C_Advantage_system5_3_annealing_schedule.xlsx"
+    r"C:/Users/andre/OneDrive/Documentos/Maestría/Julich/codigos"
+    r"/09-1265A-C_Advantage_system5_3_annealing_schedule.xlsx"
 )
 
 H_BIAS = [0.6, -0.4]  # well-conditioned problem (comfortable minimum gap throughout)
@@ -43,10 +61,10 @@ J12 = 0.5
 BETA_INIT = 5.0  # driver initial state: thermal at this beta (see module docstring)
 
 
-def run(H, t_anneal, tau, beta_bath, n_points=250):
+def run(H, t_anneal, tau, beta_r, n_points=250):
     rho0 = gibbs_state(H(0.0), BETA_INIT)
     if np.isfinite(tau):
-        diss = lambda t, rho, h: bath_dissipator(rho, h, beta_bath, tau)  # noqa: E731
+        diss = lambda t, rho, h: local_seaqt_dissipator(rho, h, beta_r, tau_a=tau, tau_b=tau)  # noqa: E731
         res = evolve(rho0, hamiltonian=H, t_span=(0, t_anneal), dissipator=diss, n_points=n_points)
     else:
         res = evolve(rho0, hamiltonian=H, t_span=(0, t_anneal), n_points=n_points)
@@ -56,7 +74,7 @@ def run(H, t_anneal, tau, beta_bath, n_points=250):
     ground_vec = v[:, 0]
     p_ground = np.array([np.real(ground_vec.conj() @ r @ ground_vec) for r in res.rho])
     ent = np.array([entropy(r) for r in res.rho])
-    omega = np.array([free_energy(r, H(t), beta_bath) for t, r in zip(res.t, res.rho)])
+    omega = np.array([free_energy(r, H(t), beta_r) for t, r in zip(res.t, res.rho)])
     final_dist = population_distribution(res.rho[-1])
     return res.t, p_ground, ent, omega, final_dist
 
@@ -66,8 +84,12 @@ def main():
     parser.add_argument("--schedule", default=DEFAULT_SCHEDULE)
     parser.add_argument("--sheet", default="processor-annealing-schedule")
     parser.add_argument("--t-anneal", type=float, default=20.0, help="Anneal time in ns")
-    parser.add_argument("--bath-mk", type=float, default=15.0, help="Bath temperature in mK")
-    parser.add_argument("--tau", type=float, nargs="+", default=[2.0, 10.0], help="Relaxation time(s) tau, ns")
+    parser.add_argument("--bath-mk", type=float, default=15.0, help="Reservoir temperature beta_R, in mK")
+    parser.add_argument("--tau", type=float, nargs="+", default=[10.0, 30.0],
+                         help="Relaxation time(s) tau, ns -- applied symmetrically as tau_A=tau_B=tau "
+                              "(use local_seaqt_dissipator directly for independent tau_A, tau_B). "
+                              "Values much below ~10 ns can violate positivity for this schedule -- "
+                              "see the module docstring / README.")
     args = parser.parse_args()
 
     if not os.path.exists(args.schedule):
@@ -75,7 +97,7 @@ def main():
 
     schedule = load_schedule(args.schedule, sheet_name=args.sheet)
     H = hamiltonian_nqubit(schedule, h=H_BIAS, J={(0, 1): J12}, t_anneal=args.t_anneal)
-    beta_bath = beta_from_kelvin(args.bath_mk / 1000.0)
+    beta_r = beta_from_kelvin(args.bath_mk / 1000.0)
 
     h_final = H(args.t_anneal)
     w, v = np.linalg.eigh(h_final)
@@ -85,18 +107,19 @@ def main():
     # basis vector -- find which one for the printed label.
     ground_basis_idx = int(np.argmax(np.abs(v[:, 0])))
     print(f"Schedule: {args.schedule}")
-    print(f"h={H_BIAS}, J12={J12}, t_anneal={args.t_anneal} ns, bath T={args.bath_mk} mK -> beta={beta_bath:.4f} ns")
+    print(f"h={H_BIAS}, J12={J12}, t_anneal={args.t_anneal} ns, reservoir T={args.bath_mk} mK "
+          f"-> beta_R={beta_r:.4f} ns")
     print(f"Final H eigenvalues: {np.round(w, 4)}; ground state {labels_bits[ground_basis_idx]}, "
           f"gap={w[1]-w[0]:.4f}")
 
     taus = list(args.tau) + [np.inf]
-    labels = {t: (f"tau = {t}" if np.isfinite(t) else "tau = inf (unitary only)") for t in taus}
+    labels = {t: (f"tau_A=tau_B = {t}" if np.isfinite(t) else "tau = inf (unitary only)") for t in taus}
 
     fig, axes = plt.subplots(1, 4, figsize=(19, 4.5))
     print(f"\n{'tau':>25} | {'P(ground) final':>16} | {'entropy final':>14} | {'Omega final':>12}")
     final_dists = {}
     for tau in taus:
-        t, p_ground, ent, omega, final_dist = run(H, args.t_anneal, tau, beta_bath)
+        t, p_ground, ent, omega, final_dist = run(H, args.t_anneal, tau, beta_r)
         final_dists[tau] = final_dist
         axes[0].plot(t, p_ground, label=labels[tau])
         axes[1].plot(t, ent, label=labels[tau])
@@ -105,9 +128,6 @@ def main():
         print("    final distribution: " + ", ".join(
             f"P({lbl})={p:.4f}" for lbl, p in zip(labels_bits, final_dist)))
 
-    omega_eq = free_energy(gibbs_state(h_final, beta_bath), h_final, beta_bath)
-    axes[2].axhline(omega_eq, color="gray", linestyle=":", linewidth=1, label="Gibbs eq. (final H)")
-
     axes[0].set_xlabel("t (ns)"); axes[0].set_ylabel(f"P({labels_bits[ground_basis_idx]})")
     axes[0].set_title(f"Ground-state population (t_anneal={args.t_anneal} ns)")
     axes[0].legend(fontsize=8); axes[0].set_ylim(-0.02, 1.02)
@@ -115,8 +135,11 @@ def main():
     axes[1].set_xlabel("t (ns)"); axes[1].set_ylabel("Entropy S(rho) [nats]")
     axes[1].set_title("Von Neumann entropy"); axes[1].legend(fontsize=8)
 
+    # Note: unlike bath_dissipator, local_seaqt_dissipator does NOT guarantee
+    # Omega(rho) decreases monotonically toward the global Gibbs state -- it's
+    # shown here as a raw diagnostic only, not a claimed convergence target.
     axes[2].set_xlabel("t (ns)"); axes[2].set_ylabel("Free energy Omega(rho)")
-    axes[2].set_title(f"Free energy vs Gibbs eq. (T={args.bath_mk} mK)")
+    axes[2].set_title("Free energy (diagnostic only -- not\nguaranteed monotonic under local SEAQT)")
     axes[2].legend(fontsize=8)
 
     # Final-state distribution, grouped by tau -- this is the panel to overlay

@@ -79,20 +79,22 @@ adapted from — see [`tests/test_local_seaqt.py`](tests/test_local_seaqt.py).
 
 ```
 seaqt/
-  core.py       density-matrix utilities, `bath_dissipator`, and a generic
-                solve_ivp-based integrator (`evolve()`) that works for any
-                finite Hilbert-space dimension
-  operators.py  N-qubit Pauli operators (Kronecker products) + the Ising
-                Hamiltonian builder (driver + linear biases + couplings)
-  dwave.py      D-Wave QPU Hamiltonian (1- and N-qubit) + Excel schedule
-                (A(s), B(s)) loader
+  core.py        density-matrix utilities, `bath_dissipator`, and a generic
+                 solve_ivp-based integrator (`evolve()`) that works for any
+                 finite Hilbert-space dimension
+  local_seaqt.py the two-reservoir local SEAQT dissipator (2-qubit only)
+  operators.py   N-qubit Pauli operators (Kronecker products) + the Ising
+                 Hamiltonian builder (driver + linear biases + couplings)
+  dwave.py       D-Wave QPU Hamiltonian (1- and N-qubit) + Excel schedule
+                 (A(s), B(s)) loader
 examples/
   one_qubit_dwave_bath.py    1 qubit, real D-Wave schedule + bath
                               relaxation — a simpler stepping stone
   two_qubit_dwave_bath.py    2 coupled qubits, real D-Wave schedule +
-                              bath relaxation — the main result
+                              local SEAQT relaxation — the main result
 tests/
   test_bath_dissipator.py    bath dissipator physics checks (1 qubit)
+  test_local_seaqt.py        local SEAQT dissipator physics checks
   test_operators.py          N-qubit Pauli/Ising-Hamiltonian construction
   test_two_qubit.py          bath dissipator physics checks on a genuine
                               2-qubit (4x4) Hamiltonian
@@ -108,12 +110,12 @@ notebooks/
 ```bash
 pip install -r requirements.txt
 python examples/one_qubit_dwave_bath.py     # 1 qubit, bath relaxation, real D-Wave schedule
-python examples/two_qubit_dwave_bath.py     # 2 qubits, bath relaxation, real D-Wave schedule
+python examples/two_qubit_dwave_bath.py     # 2 qubits, local SEAQT relaxation, real D-Wave schedule
 python -m pytest tests/ -v
 jupyter lab notebooks/seaqt_annealing_walkthrough.ipynb
 ```
 
-### Minimal example (2 qubits)
+### Minimal example (2 qubits, bath relaxation)
 
 ```python
 import numpy as np
@@ -128,6 +130,25 @@ tau = 10.0
 rho0 = gibbs_state(H(0.0), beta=5.0)  # slightly-thermalized driver state -- see "gotchas" below
 result = evolve(rho0, hamiltonian=H, t_span=(0, 20.0),
                  dissipator=lambda t, rho, h: bath_dissipator(rho, h, beta, tau))
+print("final entropy =", entropy(result.rho[-1]))
+```
+
+### Minimal example (2 qubits, local SEAQT)
+
+```python
+import numpy as np
+from seaqt import evolve, entropy, gibbs_state
+from seaqt.local_seaqt import local_seaqt_dissipator
+from seaqt.dwave import load_schedule, hamiltonian_nqubit, beta_from_kelvin
+
+schedule = load_schedule("path/to/..._annealing_schedule.xlsx")
+H = hamiltonian_nqubit(schedule, h=[0.6, -0.4], J={(0, 1): 0.5}, t_anneal=20.0)
+beta_r = beta_from_kelvin(0.015)  # 15 mK reservoir
+tau_a = tau_b = 10.0  # >= ~10 ns recommended -- see "gotchas" (positivity)
+
+rho0 = gibbs_state(H(0.0), beta=5.0)
+result = evolve(rho0, hamiltonian=H, t_span=(0, 20.0),
+                 dissipator=lambda t, rho, h: local_seaqt_dissipator(rho, h, beta_r, tau_a, tau_b))
 print("final entropy =", entropy(result.rho[-1]))
 ```
 
@@ -167,6 +188,25 @@ print("final entropy =", entropy(result.rho[-1]))
   phenomenon in quantum annealing) — `examples/two_qubit_dwave_bath.py`
   still defaults to a comfortable-gap problem as the reliably fast choice,
   not because anything else is known to fail.
+- **`local_seaqt_dissipator` does not guarantee positivity of ρ.** Eq. 15
+  (see above) is derived in the paper as an *approximation* — the paper's
+  own text: "[e]xpanding the determinants and using the fact that the
+  ratio of the inner products `ε = P_SJ/P_R` is very small due to the
+  large size of R" (i.e. it assumes the effective reservoir dominates over
+  the local "system" part). The paper proves neither positivity
+  preservation nor an explicit validity range for `τ_A`, `τ_B`, or `β_R`.
+  Empirically, `ρ` can develop small negative eigenvalues under *strong*
+  dissipation (`τ` small relative to the schedule's timescale/energy
+  scale) — confirmed not to be an integration-tolerance artifact (the same
+  violation persists unchanged at `rtol=1e-11` vs. the default `1e-9`).
+  For the real D-Wave 2-qubit schedule used in this repo, `τ ≳ 10 ns`
+  keeps `ρ`'s minimum eigenvalue `≳ -1e-6` (negligible); `τ = 2 ns` drives
+  it to `≈ -0.07` by the end of a 20 ns anneal. `examples/two_qubit_dwave_bath.py`
+  defaults to `τ ≥ 10 ns` for this reason; see
+  [`tests/test_local_seaqt.py`](tests/test_local_seaqt.py)'s
+  `test_positivity_holds_in_recommended_tau_range_but_not_for_aggressive_dissipation`
+  for the regression check, and `seaqt/local_seaqt.py`'s module docstring
+  for the full writeup.
 
 ## What the demos show
 
@@ -185,11 +225,16 @@ print("final entropy =", entropy(result.rho[-1]))
   hindrance the way it would be for a fixed-energy dissipator relaxing
   toward a pure target. The effect vanishes once the anneal is already
   comfortably adiabatic (`t_anneal≥20 ns` here, near-1.0 for all `τ`).
-- `two_qubit_dwave_bath.py` (2 coupled qubits, real D-Wave schedule):
-  strong dissipation (`τ=2`) produces a visible dip-and-recover in the
-  ground-state population mid-anneal before catching back up by the end,
-  while free energy still converges to the same Gibbs-equilibrium value
-  regardless of `τ`.
+- `two_qubit_dwave_bath.py` (2 coupled qubits, real D-Wave schedule, local
+  SEAQT): weaker dissipation (`τ=30`) tracks the unitary-only curve
+  closely and stays lower-entropy; stronger dissipation (`τ=10`, still
+  within the well-behaved range) produces visibly higher transient entropy
+  and a somewhat lower final ground-state population — dissipation costs
+  fidelity here, similar to the fixed-energy case, though the mechanism is
+  different (local relaxation, not global Gibbs relaxation). Unlike
+  `bath_dissipator`, the free-energy panel is **not** guaranteed monotonic
+  under this dynamics (confirmed empirically: it can rise before falling)
+  and is shown only as a raw diagnostic, not a convergence claim.
 
 ## Next steps
 
@@ -205,5 +250,9 @@ print("final entropy =", entropy(result.rho[-1]))
   regime.
 - Explore state- or schedule-dependent `τ(ρ, t)` rather than a constant
   relaxation time.
+- Investigate a positivity-preserving fix or bound for `local_seaqt_dissipator`
+  (e.g. deriving beyond the paper's small-`ε` approximation, or a
+  metric-respecting construction analogous to Beretta's full determinant
+  formula) so it stays valid for strong dissipation too.
 - Compare against real D-Wave hardware results for a small problem
   instance, once available.
