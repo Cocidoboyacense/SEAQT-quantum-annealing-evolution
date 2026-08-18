@@ -6,8 +6,8 @@ Uses the real QPU schedule A(s), B(s):
 
     H(s) = -A(s)/2 (sx0+sx1) + B(s)/2 (h0 sz0 + h1 sz1 + J12 sz0 sz1)
 
-and `local_seaqt_dissipator` (see seaqt/local_seaqt.py), from Yamada,
-Kusaba, Li, von Spakovsky et al., arXiv:2404.05473v3, eqs. 6, 7, 15: each
+and `local_seaqt_dissipator` (see seaqt/local_seaqt.py), from Damian,
+Holladay, Saldana  & von Spakovsky, arXiv:2404.05473v3, eqs. 6, 7, 15: each
 qubit relaxes *locally* toward its own subsystem-level SEAQT dynamics
 (shared reservoir inverse temperature beta_R, but independently tunable
 per-qubit relaxation times tau_A, tau_B), coupled to each other only
