@@ -238,21 +238,8 @@ print("final entropy =", entropy(result.rho[-1]))
 
 ## Next steps
 
-- Push past 2 qubits — `bath_dissipator`, `evolve`, and
-  `seaqt.operators.ising_hamiltonian` already work for any finite
-  Hilbert-space dimension `d`, so this is mostly a runtime/tooling
-  question rather than a physics one.
-- Sweep `t_anneal × τ` for the 2-qubit case the way the notebook already
-  does for 1 qubit.
-- Explore an intentionally (near-)degenerate multi-qubit ground-state
-  manifold with a stiff-aware integration strategy (analytic Jacobian or a
-  proper implicit solver) for the genuinely hardest small-minimum-gap
-  regime.
 - Explore state- or schedule-dependent `τ(ρ, t)` rather than a constant
   relaxation time.
-- Investigate a positivity-preserving fix or bound for `local_seaqt_dissipator`
-  (e.g. deriving beyond the paper's small-`ε` approximation, or a
-  metric-respecting construction analogous to Beretta's full determinant
-  formula) so it stays valid for strong dissipation too.
+
 - Compare against real D-Wave hardware results for a small problem
   instance, once available.
