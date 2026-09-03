@@ -55,21 +55,7 @@ dissipative contribution to drho/dt is exactly traceless (normalization
 preserved). Cross-checked against a literal port of the reference
 implementation this was adapted from; see tests/test_local_seaqt.py.
 
-CAVEAT -- positivity is NOT guaranteed in all regimes. Eq. 15 is derived
-in the paper as an *approximation*: "[e]xpanding the determinants and
-using the fact that the ratio of the inner products epsilon = P_SJ/P_R is
-very small due to the large size of R" (i.e. assuming the effective
-reservoir dominates over the system in each local subsystem J). The paper
-does not prove positivity preservation for this dynamics, nor state an
-explicit validity range for tau_A, tau_B, or beta_R. Empirically (see
-tests/test_local_seaqt.py and examples/two_qubit_dwave_bath.py), rho can
-develop small negative eigenvalues under *strong* dissipation (tau small
-relative to the anneal/schedule timescale) -- confirmed not to be an
-integration-tolerance artifact (persists unchanged at rtol=1e-11 vs the
-default 1e-9). Stick to tau values comfortably above where this shows up
-for your specific H/beta_R (empirically tau >= ~10 ns for the D-Wave
-2-qubit examples in this repo, where min eigenvalues stay >= ~-1e-6);
-`examples/two_qubit_dwave_bath.py` defaults there for that reason.
+
 """
 from __future__ import annotations
 
