@@ -3,6 +3,16 @@ Two-reservoir / local SEAQT equation of motion for a bipartite (2-qubit)
 system. From Yamada, Kusaba, Li, von Spakovsky et al., arXiv:2404.05473v3,
 equations 6, 7, 8, and 15.
 
+For 3+ qubits, see `seaqt.local_seaqt_n`, which generalizes this to N
+qubits (Beretta's general M-constituent composite equation, specialized
+per-qubit with the same S_J+R closed form as here). The public functions
+below (`reduced_state`, `locally_perceived_operator`,
+`local_seaqt_dissipator`) are now thin n=2 special cases of their `_n`
+counterparts -- kept as their own functions (not deleted/replaced) since
+they're the independent reference `local_seaqt_n` was regression-tested
+against, and since the walkthrough notebook, examples/two_qubit_dwave_bath.py,
+and README.md all call them directly by these names.
+
 Unlike `bath_dissipator` (seaqt/core.py), which relaxes the WHOLE composite
 system toward a single global Gibbs state, this dissipator relaxes each
 qubit *locally*: each subsystem J in {A, B} (A = qubit 0, B = qubit 1, in
@@ -67,26 +77,24 @@ import numpy as np
 
 from .core import Operator, eig_hermitian, hermitize
 
-_I2 = np.eye(2, dtype=complex)
-
 
 def reduced_state(rho: Operator, keep: int) -> Operator:
     """2-qubit reduced density operator of the qubit at index `keep` (0 or
     1), tracing out the other qubit. Matches seaqt.operators' Kronecker
     index convention (qubit 0 = leftmost/most-significant): for a 4x4 rho
     with row/col index i = 2*q0+q1, `keep=0` traces out q1 (leaves q0's
-    2x2 state), `keep=1` traces out q0 (leaves q1's 2x2 state)."""
-    if keep == 0:
-        return np.array([
-            [rho[0, 0] + rho[1, 1], rho[0, 2] + rho[1, 3]],
-            [rho[2, 0] + rho[3, 1], rho[2, 2] + rho[3, 3]],
-        ], dtype=complex)
-    elif keep == 1:
-        return np.array([
-            [rho[0, 0] + rho[2, 2], rho[0, 1] + rho[2, 3]],
-            [rho[1, 0] + rho[3, 2], rho[1, 1] + rho[3, 3]],
-        ], dtype=complex)
-    raise ValueError("keep must be 0 or 1 for a 2-qubit reduced state")
+    2x2 state), `keep=1` traces out q0 (leaves q1's 2x2 state).
+
+    Thin n=2 special case of `seaqt.local_seaqt_n.reduced_state_n` -- kept
+    (rather than deleted) as the independent, hand-written reference that
+    tests/test_local_seaqt_n.py regression-checks the general version
+    against, and because sections 6-11 of the walkthrough notebook,
+    examples/two_qubit_dwave_bath.py, and README.md all call it directly.
+    """
+    if keep not in (0, 1):
+        raise ValueError("keep must be 0 or 1 for a 2-qubit reduced state")
+    from .local_seaqt_n import reduced_state_n
+    return reduced_state_n(rho, keep=keep, n=2)
 
 
 def locally_perceived_operator(op: Operator, rho_other: Operator, target_qubit: int) -> Operator:
@@ -97,14 +105,14 @@ def locally_perceived_operator(op: Operator, rho_other: Operator, target_qubit: 
         op^J = Tr_Jbar[(I_J (x) rho_Jbar) op]
 
     with the Kronecker product ordered to match seaqt.operators (qubit 0
-    leftmost)."""
-    if target_qubit == 0:
-        weighted = np.kron(_I2, rho_other) @ op
-        return reduced_state(weighted, keep=0)
-    elif target_qubit == 1:
-        weighted = np.kron(rho_other, _I2) @ op
-        return reduced_state(weighted, keep=1)
-    raise ValueError("target_qubit must be 0 or 1")
+    leftmost). Thin n=2 special case of
+    `seaqt.local_seaqt_n.locally_perceived_operator_n` -- see
+    `reduced_state`'s docstring for why this stays as its own function
+    rather than being deleted in favor of the general one."""
+    if target_qubit not in (0, 1):
+        raise ValueError("target_qubit must be 0 or 1")
+    from .local_seaqt_n import locally_perceived_operator_n
+    return locally_perceived_operator_n(op, rho_other, j=target_qubit, n=2)
 
 
 def _subsystem_dissipator(rho_j: Operator, h_j: Operator, beta_r: float, eig_floor: float = 1e-12) -> Operator:
@@ -128,16 +136,15 @@ def local_seaqt_dissipator(rho: Operator, h: Operator, beta_r: float, tau_a: flo
 
     beta_r : shared reservoir inverse temperature
     tau_a, tau_b : relaxation times for qubit 0 ("A") and qubit 1 ("B")
+
+    Thin n=2 special case of `seaqt.local_seaqt_n.local_seaqt_dissipator_n`
+    (cross-checked bit-for-bit equal in tests/test_local_seaqt_n.py) --
+    kept as its own function (rather than deleted) since it's the
+    independent reference that regression test validates the general
+    N-qubit version against, and since the walkthrough notebook (sections
+    6-11), examples/two_qubit_dwave_bath.py, and README.md all call it
+    directly with this exact (tau_a, tau_b) signature. For 3+ qubits, use
+    `local_seaqt_dissipator_n` directly.
     """
-    rho = hermitize(rho)
-    rho_a = reduced_state(rho, keep=0)
-    rho_b = reduced_state(rho, keep=1)
-
-    h_a = locally_perceived_operator(h, rho_b, target_qubit=0)
-    h_b = locally_perceived_operator(h, rho_a, target_qubit=1)
-
-    d_a = _subsystem_dissipator(rho_a, h_a, beta_r)
-    d_b = _subsystem_dissipator(rho_b, h_b, beta_r)
-
-    diss = -(1.0 / tau_a) * np.kron(d_a, rho_b) - (1.0 / tau_b) * np.kron(rho_a, d_b)
-    return hermitize(diss)
+    from .local_seaqt_n import local_seaqt_dissipator_n
+    return local_seaqt_dissipator_n(rho, h, beta_r, taus=[tau_a, tau_b], n=2)
