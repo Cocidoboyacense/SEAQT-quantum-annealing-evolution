@@ -53,6 +53,84 @@ Both `config.py` placeholders are now filled in and verified end-to-end
   `config.k_bt_over_h_mhz()` (not a rounded literal). In these units the
   hardware ceiling above is ~4.106x.
 
+## King's approximate s_c vs. the true minimum-gap point
+
+`s_c` (used throughout, incl. `solve_s_c_and_J` above) comes from King et
+al.'s crossing condition `Gamma(s_c) = J_cal(s_c)*|J|` -- a perturbative/
+2-level approximation to where the many-body gap is actually smallest, not
+the exact answer. Checked directly (`check_true_crossing_point.py`) by
+diagonalizing the full 64-level `H(s)` and finding where `E1-E0` is
+genuinely minimized.
+
+**A first, naive attempt (sort all 64 eigenvalues, take E1-E0) was
+misleading**: `H(s)` commutes with the global spin-flip parity
+`P = sigma_x^(x)6` for every `s` (the driver is built from sigma_x, so
+trivially commutes with it; the coupling term is invariant under flipping
+*all* spins at once, since every `sigma_z_i*sigma_z_j` product is
+unchanged). The `s=0` ground state (`|+>^(x)6`) sits exactly in the `P=+1`
+sector (verified: `<P>=+1.0000` for every combo), and since `P` is exactly
+conserved, the system can never leave that sector -- so the *only* gap that
+matters for the actual (coherent) dynamics is the one *within* `P=+1`. Near
+`s=1` the two classical ground configurations (all-up/all-down, this
+experiment uses the ferromagnetic sign) are not themselves `P` eigenstates;
+their symmetric combination is `P=+1` (reachable) and antisymmetric is
+`P=-1` (dynamically unreachable, a "ghost"). A naive full-spectrum sort
+picks up that ghost state as a near-degenerate "E1" whose splitting from
+the true ground state closes smoothly toward zero well before `s=1` --
+that's ordinary tunneling-splitting physics between the two classical
+configurations, unrelated to the Landau-Zener avoided crossing, and it
+swamps any real signal if you don't project it out first.
+
+**Fixed by projecting `H(s)` onto the 32-dimensional `P=+1` subspace**
+before diagonalizing. Result, comparing the true minimum-gap location
+`s_min` against `s_c` (King):
+
+```
+        mean delta_s = s_min - s_c(King)     mean |delta_Gamma|   mean |delta_Jcal|
+ring:   +0.002  (~0.2-1.5% of [0,1])          ~1-5%                ~1-2%
+chain:  +0.020  (~2% of [0,1], all 5 J's
+         same sign -- systematic, not noise)  ~20-27%              ~12-17%
+```
+
+- **Ring**: King's `s_c` is essentially exact (mean error ~0.002 in `s`) --
+  expected, since his formula is derived for a periodic chain, and the ring
+  is exactly that.
+- **Chain**: the *location* error is small in absolute `s` (~2%,
+  consistently one-sided -- the true minimum is always slightly later than
+  King's estimate), but `Gamma(s)`/`J_cal(s)` are steep enough there that
+  the resulting energy-scale mismatch is not small (~20-27% for `Gamma`,
+  ~12-17% for `J_cal`).
+- **What this does and doesn't mean for `a_theory` itself**: King's formula
+  (Eq. 8) should still be *reported* evaluated at King's own `s_c` -- that's
+  the quantity his derivation actually defines, and it's what should be
+  compared against real hardware as "the King et al. prediction". The SEAQT
+  unitary simulation (Stage 1, below) is unaffected either way -- it
+  integrates the real, full `H(t)` sweep directly and never uses `s_c` as
+  an input.
+- **But evaluated purely as a diagnostic** (`a_theory_location_sensitivity.csv`,
+  same `a_theory_for(s_c)` call, just fed `s_min` instead of King's `s_c`),
+  the location error turns out to explain **most** of Stage 1's chain
+  SEAQT/theory deviation -- not a minor contribution as first guessed:
+
+  ```
+                  ratio SEAQT/theory         |1 - ratio|
+           with s_c(King)   with s_min    King    s_min
+  ring:       0.980           1.015       2.0%    1.5%   -> location explains ~23%
+  chain:      0.756           1.060      24.4%    6.0%   -> location explains ~76%
+  ```
+
+  For chain, swapping in the true minimum-gap location drops the SEAQT/
+  theory deviation from 24% to 6% -- **~76% of that combo's apparent
+  disagreement with King's formula is explained by King's `s_c`
+  approximation being evaluated at the wrong point for an open chain**,
+  not by the formula's functional form (the `b(s_c)` coefficient) itself
+  being wrong. For ring, both errors are already small (King's `s_c` is
+  nearly exact), so the split matters much less in absolute terms.
+  Practical takeaway: the true minimum, not King's `s_c`, is the more
+  physically meaningful reference point for chain-specific SEAQT
+  diagnostics going forward -- worth using it if a chain-focused campaign
+  is designed from scratch in the future.
+
 ## Plan (redesigned around the real ceiling)
 
 - **Topologies**: ring (6-cycle) and open chain (5 edges), h=0 throughout
@@ -136,16 +214,26 @@ of the SEAQT walkthrough.)
 
 **Stage 2 (fit a single tau in `local_seaqt_dissipator_n`/related dissipators
 to match `a_empirical` for ring, J=1x, freeze it, test on the other 9
-combos)** -- attempted, not yet successful:
+combos)** -- attempted, concluded unsuccessful with the dissipators
+available in this repo; parked (not abandoned) in favor of other work:
+
 - `local_seaqt_dissipator_n` (per-qubit relaxation toward a shared beta_r at
   20 mK): saturates around `a~0.049` (target `a_target=0.0722`) for
-  numerically/physically stable tau (>=4 ns); more aggressive tau breaks
-  down (tau=3 fails to integrate at all; tau=3.5 gave an unphysical
-  `P_gs=4.3`, caught by an added positivity/trace guard -- a real, not
-  cosmetic, check). Root cause suspected: it's a per-qubit, mean-field
+  numerically/physically stable tau (>=4 ns). A first pass at pushing past
+  that (tau=3.5) gave an outright nonsense `P_gs=4.3` on the fit's longest
+  point, and fitting through it anyway suggested `a` might jump sharply
+  toward target between tau=3.5-4.0 -- **that jump turned out to be an
+  artifact of the corrupted point, not a real crossing**: re-checked with a
+  finer scan (tau=3.6-3.9) that logs (rather than hard-rejects) mild
+  positivity dips and explicitly drops only the point(s) that are outright
+  nonsensical, `a` computed from the remaining, genuinely trustworthy
+  points stays flat at ~0.031 across that whole range -- no sign of an
+  approaching crossing. Root cause suspected: it's a per-qubit, mean-field
   mechanism (each qubit relaxes toward its own locally-perceived
   equilibrium), which may be structurally too weak to move a genuinely
-  entangled many-body ground-state population this much.
+  entangled many-body ground-state population this much, regardless of how
+  aggressively tau is pushed within any regime that still produces a
+  trustworthy trajectory.
 - `seaqt.core.bath_dissipator` (global, single-joint-entropy-operator
   dissipator, no per-qubit decomposition): reaches higher `a` per unit
   `1/tau`, but disqualified -- it ignores per-qubit locality entirely (can
@@ -154,22 +242,39 @@ combos)** -- attempted, not yet successful:
   positivity even at mild coupling (tau=50 already unphysical, min
   eigenvalue -0.09).
 - `local_seaqt_dephasing_n` (isolated dephasing, joint entropy operator but
-  per-qubit action, no reservoir): the most physically-motivated remaining
-  candidate, but extremely expensive to evaluate (~45-85 min per single
-  `a(tau)` point, dominated by a full 64x64 `matrix_log` every RHS call) --
-  probed to 1 point (`tau=500 -> a=0.0297`, i.e. essentially the unitary
-  limit) before being deprioritized in favor of the hardware diagnostic
-  below.
-- **Leading hypothesis, not yet tested**: the excess decay may be driven by
-  inhomogeneous averaging over thousands of reads on a *fixed* embedding
-  (quasi-static 1/f flux noise / ICE specific to those physical qubits,
-  T2*-like) rather than genuine single-trajectory decoherence -- would
-  explain why no single-trajectory SEAQT dissipator, of any form tried so
-  far, reproduces the effect. `second_embedding_check.py` (ready to run,
-  blocked on Advantage2_system1 being in maintenance) re-measures `ring,
-  J=1x` on a second, disjoint physical embedding to test this directly: if
-  `a_empirical` changes meaningfully between embeddings, that's direct
-  evidence for this hypothesis.
+  per-qubit action, no reservoir): the most physically-motivated candidate,
+  but extremely expensive to evaluate (~45 min to >3h per single `a(tau)`
+  point, dominated by a full 64x64 `matrix_log` every RHS call) *and* it
+  turns out to be the most fragile of the three -- already unphysical
+  (min eigenvalue -1.7e-3) at tau=50, a much weaker/"safer"-looking coupling
+  than where the relaxation dissipator broke down. At tau=500 it's
+  essentially the unitary limit (`a=0.0297`, no real effect). No tau found
+  that is both physically trustworthy and meaningfully different from the
+  unitary baseline.
+- **The "different physical embedding" hypothesis was tested directly and
+  does NOT hold up**: `second_embedding_check.py` re-measured `ring, J=1x`
+  on a second, disjoint physical embedding (qubits `[563, 574, 670, 4430,
+  4515, 4526]` vs. the original `[629, 641, 653, 665, 3483, 3507]`) once
+  Advantage2_system1 came back from maintenance. Result: `a_empirical` =
+  0.06716 vs. the original 0.07218 -- only ~7% different, well within
+  ordinary measurement variation. This argues *against* per-physical-qubit
+  noise (ICE, quasi-static 1/f flux offsets, T2*-like inhomogeneous
+  averaging) being the dominant driver of the excess decay -- the effect
+  looks like a robust, embedding-independent property of the anneal on
+  this chip, not an artifact of which six physical qubits happened to be
+  used.
+- **Bottom line as of this pass**: none of the three single-mechanism
+  SEAQT dissipators available in this repo, used alone, reach
+  `a_target` within a regime that's both numerically stable and
+  physically trustworthy -- and the leading alternative explanation
+  (embedding-specific noise) has been directly ruled out, not just
+  deprioritized. What's left open: a genuinely different/combined
+  dissipative mechanism (e.g. `local_seaqt_dissipator_full_n`, relaxation
+  + dephasing together, untested), or a mechanism outside this
+  single-trajectory SEAQT framework entirely (see the "1-P_GS values
+  don't clearly improve at short t_a either" discussion -- the excess is
+  already substantial at the shortest measurable `t_a`, not something that
+  visibly accumulates with more time for dissipation to act).
 
 See also `experiments/advantage_system4_lz_crossover/` -- the same
 experiment run on `Advantage_system4` (older Pegasus-generation chip) as a
