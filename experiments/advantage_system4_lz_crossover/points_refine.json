@@ -1,0 +1,402 @@
+[
+ {
+  "topology": "ring",
+  "j_multiple": 1.0,
+  "t_anneal_ns": 5.115
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 1.0,
+  "t_anneal_ns": 8.031
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 1.0,
+  "t_anneal_ns": 12.61
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 1.0,
+  "t_anneal_ns": 19.8
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 1.0,
+  "t_anneal_ns": 31.088
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 1.0,
+  "t_anneal_ns": 48.813
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 1.0,
+  "t_anneal_ns": 73.219
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 1.0,
+  "t_anneal_ns": 109.828
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 1.5,
+  "t_anneal_ns": 5.115
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 1.5,
+  "t_anneal_ns": 8.031
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 1.5,
+  "t_anneal_ns": 12.61
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 1.5,
+  "t_anneal_ns": 19.8
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 1.5,
+  "t_anneal_ns": 31.088
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 1.5,
+  "t_anneal_ns": 48.813
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 1.5,
+  "t_anneal_ns": 73.219
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 1.5,
+  "t_anneal_ns": 109.828
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 2.0,
+  "t_anneal_ns": 5.115
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 2.0,
+  "t_anneal_ns": 6.91
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 2.0,
+  "t_anneal_ns": 9.335
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 2.0,
+  "t_anneal_ns": 12.61
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 2.0,
+  "t_anneal_ns": 17.035
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 2.0,
+  "t_anneal_ns": 23.013
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 2.0,
+  "t_anneal_ns": 34.519
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 2.0,
+  "t_anneal_ns": 51.779
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 2.5,
+  "t_anneal_ns": 5.115
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 2.5,
+  "t_anneal_ns": 6.91
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 2.5,
+  "t_anneal_ns": 9.335
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 2.5,
+  "t_anneal_ns": 12.61
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 2.5,
+  "t_anneal_ns": 17.035
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 2.5,
+  "t_anneal_ns": 23.013
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 2.5,
+  "t_anneal_ns": 34.519
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 2.5,
+  "t_anneal_ns": 51.779
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 3.0,
+  "t_anneal_ns": 5.115
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 3.0,
+  "t_anneal_ns": 6.91
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 3.0,
+  "t_anneal_ns": 9.335
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 3.0,
+  "t_anneal_ns": 12.61
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 3.0,
+  "t_anneal_ns": 17.035
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 3.0,
+  "t_anneal_ns": 23.013
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 3.0,
+  "t_anneal_ns": 34.519
+ },
+ {
+  "topology": "ring",
+  "j_multiple": 3.0,
+  "t_anneal_ns": 51.779
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 1.0,
+  "t_anneal_ns": 5.115
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 1.0,
+  "t_anneal_ns": 8.031
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 1.0,
+  "t_anneal_ns": 12.61
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 1.0,
+  "t_anneal_ns": 19.8
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 1.0,
+  "t_anneal_ns": 31.088
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 1.0,
+  "t_anneal_ns": 48.813
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 1.0,
+  "t_anneal_ns": 73.219
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 1.0,
+  "t_anneal_ns": 109.828
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 1.5,
+  "t_anneal_ns": 5.115
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 1.5,
+  "t_anneal_ns": 8.031
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 1.5,
+  "t_anneal_ns": 12.61
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 1.5,
+  "t_anneal_ns": 19.8
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 1.5,
+  "t_anneal_ns": 31.088
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 1.5,
+  "t_anneal_ns": 48.813
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 1.5,
+  "t_anneal_ns": 73.219
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 1.5,
+  "t_anneal_ns": 109.828
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 2.0,
+  "t_anneal_ns": 5.115
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 2.0,
+  "t_anneal_ns": 6.91
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 2.0,
+  "t_anneal_ns": 9.335
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 2.0,
+  "t_anneal_ns": 12.61
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 2.0,
+  "t_anneal_ns": 17.035
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 2.0,
+  "t_anneal_ns": 23.013
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 2.0,
+  "t_anneal_ns": 34.519
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 2.0,
+  "t_anneal_ns": 51.779
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 2.5,
+  "t_anneal_ns": 5.115
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 2.5,
+  "t_anneal_ns": 8.031
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 2.5,
+  "t_anneal_ns": 12.61
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 2.5,
+  "t_anneal_ns": 19.8
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 2.5,
+  "t_anneal_ns": 31.088
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 2.5,
+  "t_anneal_ns": 48.813
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 2.5,
+  "t_anneal_ns": 73.219
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 2.5,
+  "t_anneal_ns": 109.828
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 3.0,
+  "t_anneal_ns": 5.115
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 3.0,
+  "t_anneal_ns": 6.91
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 3.0,
+  "t_anneal_ns": 9.335
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 3.0,
+  "t_anneal_ns": 12.61
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 3.0,
+  "t_anneal_ns": 17.035
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 3.0,
+  "t_anneal_ns": 23.013
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 3.0,
+  "t_anneal_ns": 34.519
+ },
+ {
+  "topology": "chain",
+  "j_multiple": 3.0,
+  "t_anneal_ns": 51.779
+ }
+]
