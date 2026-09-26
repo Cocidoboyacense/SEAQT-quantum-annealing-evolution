@@ -1,0 +1,21 @@
+ring1x: 8 t_a x 4 tau x 6 s_f x 1 T; 0 done, 192 to go on 11 workers
+  10/192  221s elapsed, ETA 4013s
+  20/192  468s elapsed, ETA 4025s
+  30/192  680s elapsed, ETA 3670s
+  40/192  1036s elapsed, ETA 3937s
+  50/192  1136s elapsed, ETA 3227s
+  60/192  1153s elapsed, ETA 2537s
+  70/192  1178s elapsed, ETA 2052s
+  80/192  1193s elapsed, ETA 1671s
+  90/192  1207s elapsed, ETA 1368s
+  100/192  1217s elapsed, ETA 1120s
+  110/192  1224s elapsed, ETA 912s
+  120/192  1231s elapsed, ETA 739s
+  130/192  1236s elapsed, ETA 590s
+  140/192  1242s elapsed, ETA 461s
+  150/192  1245s elapsed, ETA 349s
+  160/192  1249s elapsed, ETA 250s
+  170/192  1251s elapsed, ETA 162s
+  180/192  1254s elapsed, ETA 84s
+  190/192  1255s elapsed, ETA 13s
+  192/192  1255s elapsed, ETA 0s

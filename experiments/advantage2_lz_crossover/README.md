@@ -185,6 +185,153 @@ chain:  +0.020  (~2% of [0,1], all 5 J's
 
 ## Results so far
 
+> **Superseded (2026-09-19).** Everything below this box was computed with the
+> schedule's GHz values used as angular frequencies -- a missing factor 2*pi
+> (the columns are `A(s)/h`, `B(s)/h`; `seaqt.dwave` now applies it). With the
+> corrected units real hardware is ~2x *slower* than the closed-system LZ
+> formula (`a_emp/a_theory` = 0.27-0.60, not 1.7-3.8x faster) and at 0.35-0.70
+> of the exact SEAQT-unitary rate; SEAQT-unitary reproduces King's formula on
+> the ring (0.97-0.98); on the 115 of the 215 (topology, J, sign) combos where
+> the closed system is not saturated (>99% at the shortest anneal; the other 100
+> carry no information about agreement) it predicts P_gs with median RMS 0.016,
+> the hardware lying below it at 81% of their points and above at 0.7%
+> (notebook sections 16-16.4, `stage1_seaqt_unitary.py`, `analyze_stage1.py`). The Stage 2 attempts below (local relaxation, global
+> bath, dephasing; `results/tau_calibration_ring1x*_log.csv`) also used the old
+> units and a pure initial state and are void.
+>
+> ### Stage 2, recalibration with the corrected units (`calibrate_tau_bath.py`)
+>
+> Relaxation to an external bath (`seaqt.core.bath_dissipator`, the 1-qubit
+> dissipator) applied to the full 64x64 rho of the ring, J=1x, T = 20 mK
+> (beta = 0.382 ns), initial state `(1-eps)|psi0><psi0| + eps I/64` (eps = 1e-4:
+> a positive-definite perturbation, so ln(rho) is never singular), tau from 5 ns
+> to unitary, against the three hardware series at hand (original J<0,
+> extended J<0 and J>0). Results (`results/tau_calibration_ring1x_bath_*`):
+>
+> - **No tau improves on the unitary limit**: RMS(P_hw - P_sim) over the 8 anneal
+>   times is smallest at tau = inf for all three series (0.035 / 0.040 / 0.019;
+>   the last two match the thesis repo's independent implementation) and grows
+>   monotonically as tau decreases (0.042 / 0.047 / 0.025 at tau = 500 ns, 0.069 /
+>   0.073 / 0.049 at 100 ns). The hardware lies *below* the simulation
+>   (mean P_hw - P_sim = -0.027 / -0.031 / -0.016 for the unitary) and the bath
+>   only raises P_gs: it cools, the wrong direction; the fitted rate moves away
+>   from the target (0.142 -> 0.154-0.170 vs a_hw = 0.072; the unitary value
+>   without the eps floor is 0.184).
+> - **The hardware plateaus at 1-P_gs ~ 1%** while every simulation goes to
+>   1e-4 - 1e-5: a constant-tau bath at 20 mK keeps cooling, with no freeze-out.
+> - **Positivity (corrected 2026-09-20)**: with `seaqt.core.evolve` (RK45 on the
+>   entries of rho), tau >= 100 ns was clean (min eigenvalue ~1e-9) and
+>   insensitive to eps (1e-5 to 1e-3 change P_gs by <= 1e-4), but tau <= 50 ns was
+>   not: P_gs > 1 at tau = 50 (1.04 at 145 ns), and tau <= 20 diverged or blew
+>   up at the longer anneals (P_gs = 3.6 at t_a = 64 ns). **This was an integrator
+>   artifact, not a property of the equation**: the advisor is right that
+>   drho/dt = A rho + rho A^dagger (A = -iH - (beta/2tau) F, F Hermitian) keeps a
+>   positive-definite rho0 positive-definite for all time (rho = G rho0 G^dagger,
+>   G invertible). What fails is the *additive* truncation error of RK45: eigenvalues
+>   far below `atol` (the Gibbs weights at 20 mK reach 1e-30 and below) drift
+>   negative, and once negative the floored logarithm makes them grow without bound.
+>   `seaqt.core.evolve_bath_factorized` / `evolve_bath_split` integrate the factor
+>   Gamma (rho = Gamma Gamma^dagger) instead, so rho is positive by construction; the
+>   tau = 20 and 50 ns cases at t_a = 64 ns that diverged now give 1-P = 3.4e-5 and
+>   6.5e-7 with min eigenvalue ~1e-16 (see "Stage 2, option 1" below).
+> - The frozen-tau test on the other 9 combinations was not run: there is
+>   no tau to freeze.
+>
+> For scale: the hardware's own +/-J asymmetry on ring/chain (gauge-equivalent,
+> so identical closed-system prediction; only at equal programmed |J|, i.e.
+> J <= 2.5x -- above that the AF sign hits the chip's limit |J| = 1) averages
+> |dP| = 0.012 per point over 34 common points and reaches 0.08-0.10 at the
+> shortest anneals (`results/stage1b_systematics.csv`), comparable to these RMS
+> values, so no single-parameter model can be judged much more finely than that.
+
+### Stage 2, option 1: bath with freeze-out and a positivity-preserving integrator (`calibrate_tau_freezeout.py`, 2026-09-21)
+
+Same bath equation as above, applied to the full 64x64 rho, but (i) integrated through the factor Gamma
+(rho = Gamma Gamma^dagger; `seaqt.core.evolve_bath_split`, checked against the adaptive `evolve_bath_factorized`,
+against the step dt and against the log floor), so rho is positive semidefinite and trace one by construction --
+worst minimum eigenvalue over all 3,300+ runs below is -1.1e-15 (rounding) and none diverged; (ii) starting from
+the Gibbs state of H(0) at the bath temperature (full rank: no eps to choose); (iii) with the bath switched off after a
+freeze-out point, `-(beta/2tau) w(s) {F,rho}`, `w(s) = 1/(1 + exp((s - s_f)/0.02))`. T = 20 mK is the measured
+operating temperature; tau and s_f are the two fitted parameters.
+
+- **Calibration, ring J=1x** (three hardware series; tau in 5-300 ns, s_f in 0.45-0.75 or never): the closed system
+  misses the hardware's late-time floor by 4.3 decades (t_a >= 38 ns) and has RMS(1-P) = 0.031. Choosing the (tau, s_f)
+  that minimises the whole-curve |log10(model/hardware)| subject to RMS(1-P) <= 1.1x the closed system's gives
+  **tau = 7 ns, s_f = 0.45** (just before the crossing, s_c = 0.46): whole-curve log error 0.39 decades (closed: 2.21),
+  RMS(1-P) 0.032 (closed: 0.031), floor-regime error 0.60 decades. Larger tau (>= 30 ns) leaves the floor unreproduced
+  (>= 2 decades); larger s_f reproduces the floor at the price of a worse coherent regime (e.g. tau = 10 ns,
+  s_f = 0.6: floor 0.6 decades but coherent-window RMS 0.10 vs 0.042).
+- **Prediction on everything else** (same tau, s_f, T; 215 combos = 1472 distinct anneals; the ring at J=1x, both
+  signs, is calibration data, so chain, the 33 native shapes and ring at J>1x are the real test; 115 combos are
+  informative, i.e. the closed system is < 99% at the shortest anneal):
+  - *floor regime* (points after the hardware's first 1-P minimum): median |log10(model/hardware)| = **1.13
+    decades for the bath vs 5.28 for the closed system**; the bath is closer in 99% of the 110 combos that have such
+    points. By J multiple (1x, 1.75x, 2.5x, 3.25x, 4x): bath 0.84, 1.36, 1.38, 1.56, 1.30 vs closed system 5.45, 5.10,
+    5.28, 4.56, 4.34. Shot noise: 39% of these points (91 of 234) have fewer than 5 hardware failures in 8000 reads and
+    carry no information on the size of 1-P; on the other 143 points the median error is 0.73 decades (bath) vs 5.94
+    (closed system), within a factor 10 for 61% vs 1% of them, within a factor 3 for 33% vs 0%.
+  - *coherent regime* (up to the hardware's first minimum): the bath does **not** help: median RMS(1-P) 0.0222 vs 0.0186
+    for the closed system, better in only 3% of informative combos (binomial log-likelihood higher for the bath at 11% of
+    these points but at 91% of the floor-regime ones). The hardware's excess over the closed system at short t_a (~0.04
+    in 1-P for the ring) is not explained by relaxation, which only cools.
+  - *systematic residuals*: the bath predicts a floor about 1 decade too low (signed median -1.13) and, for the ring,
+    rises with t_a far more steeply than the hardware (1e-3 to 3e-2 between 64 and 145 ns vs 7e-3 to 1.3e-2).
+  - *what sets s_f*: tying the freeze-out to each combo's crossing (s_f = s_c - 0.01; same 215 combos) is no better than
+    the fixed s_f = 0.45 and worse for J >= 1.75x (floor error 1.76, 2.33, 2.14, 2.37 decades vs 1.30-1.56), while
+    staying closer to the closed system in the coherent regime (0.0196 vs 0.0222): on this evidence the freeze-out is set
+    by the chip's schedule (fixed s) rather than by where each instance crosses. Only these two hypotheses were tested.
+- Files: `results/stage2_freezeout_log.csv` (ring scan, 368 runs), `stage2_freezeout_heldout_log.csv` and
+  `stage2_freezeout_heldout_tau7_*_summary.csv / _points.csv` (per-combo and per-point tables),
+  `results/plots/stage2_freezeout_ring1x.png`, `stage2_freezeout_heldout_tau7_sf0.45_T20.png`. Reproduce with
+  `python calibrate_tau_freezeout.py run --set ring1x`, `heldout --tau 7 --sf 0.45`, `heldout --tau 7 --sf-offset -0.01`,
+  then `analyze`, `analyze-heldout`, `figure-heldout`.
+- Numerical note: numpy's `eigh` (LAPACK zheevd) failed to converge on one finite, exactly Hermitian 64x64 Hamiltonian
+  (native_e6_c26_r2, J=2.5x, s = 0.9913, a near-diagonal matrix with many equal levels); `seaqt.core.eigh_robust` /
+  `svd_robust` now fall back to the QR drivers (test in `tests/test_bath_factorized.py`).
+
+### Stage 2, option 1 continued: is s_f's sign backwards? (`check_freezeout_direction.py`, 2026-09-22/23)
+
+The calibrated `s_f = 0.45` sits *below* the ring's crossing (`s_c = 0.460`) -- the bath switches off just before
+reaching the small-gap region, not after it, which is backwards from the usual quantum-annealing freeze-out picture
+(e.g. Amin, Truncik & Averin 2009): relaxation should stay effective while the gap is small, close to `s_c` on both
+sides, and freeze out once the gap reopens *after* the crossing -- which is also where the thesis's own freeze-out
+point, `s_f = 0.684`, sits. Three checks, 384 runs (same dissipator/integrator as above; worst minimum eigenvalue
+-7.6e-16, none diverged):
+
+- **(A) Fill the grid**: the original scan never tried `s_f = 0.684` together with the short tau (5-20 ns) that ended
+  up fitting best. Filled in: at the *same* short tau, `s_f = 0.684` is clearly worse than `s_f = 0.45` in both error
+  and RMS everywhere in the grid (e.g. tau=7: log error 0.89 decades / RMS 0.123 at `s_f=0.684`, vs 0.39 / 0.032 at
+  `s_f=0.45`) -- not a gap in the exploration; `s_f < s_c` genuinely fits the ring better at every tau tried.
+- **(B) Reverse the switch** (bath OFF for `s < s_f`, ON for `s > s_f` -- the textbook direction): decisively worse
+  than *no dissipator at all*, by 1.5-2.5 orders of magnitude, for every one of 20 `(tau, s_f)` pairs tried (best
+  reversed case: 247x off, vs the closed system's own 164x; none satisfy the RMS constraint). At matched
+  `tau=5, s_f~=0.46` the forward/reversed gap is a factor of ~600 (2.2x vs 1434x). Likely mechanism: a bath mostly ON
+  for the back half of the sweep behaves like the undifferentiated (never-freezing) bath above, which over-cools
+  relative to the hardware's floor in the *same* direction already documented there, compounding rather than fixing
+  the closed system's shortfall.
+- **(C) An independent instance**: the chain has the same crossing (`s_c = 0.4597`, the condition depends only on the
+  schedule and `|J|`, not the graph) and independent hardware data. Calibrated on its own, its optimum lands at
+  essentially the same point, `tau=5 ns, s_f=0.45` (log error 0.31 decades, 2.0x -- even better than the ring's own
+  best) -- not a ring-specific coincidence of the fit.
+- **Net**: the reversed (textbook) direction is ruled out within this model family; the forward direction
+  (`s_f < s_c`) is confirmed on a second, independent instance; *why* the cutoff sits before the crossing rather than
+  at or after it remains unexplained. Candidate follow-up, not yet tried: a `tau(s)` that grows smoothly near `s_c`
+  from both sides instead of a sharp one-sided switch.
+- Files: `results/stage2_freezeout_direction_check_log.csv`, `results/plots/stage2_freezeout_direction_pareto.png`.
+  Reproduce with `python check_freezeout_direction.py run`, then `analyze` / `figure`. Notebook section 16.6.
+
+**Shape-by-shape curves (notebook 16.7, no new simulation -- reuses the `tau=7, s_f=0.45` points above)**: extends
+16.4's per-shape `1-P_GS` vs. `t_a` grid (13 shapes, J=1x/2.5x) with the bath curve, wherever that (shape, J) is not
+saturated. At J=1x the bath curve reproduces the hardware's dip-and-recovery shape that a closed system cannot
+produce by construction (monotonic decay) -- on the ring (the calibration case) it tracks the recovery closely and
+slightly overshoots by the last point (145 ns: 3.0e-2 vs hardware's 2.0e-2); on `chain` it recovers only partway
+within the measured window (99 ns: 1.0e-2 vs 3.3e-2, still 3x low) -- the shape-by-shape picture behind the "~1
+decade low on average" finding above. At J=2.5x (only `ring`, `chain`, `e5 c0`, `e5 c1`, `e6 c15` are still
+informative there) the coherent-window cost is visible directly: the bath curve sits below the already-low unitary
+curve throughout the coherent window, not only at long `t_a` (ring at 5 ns: hardware 0.092, unitary 0.056, bath
+0.041). `e9 c54`/`e10 c66`/`e11 c59` have nothing to show at J=2.5x (already saturated there); `e6 c26`/`e8 c37`
+(both signs) are the busiest panels.
+
 **Coherent-window fit vs. closed-system theory** (King et al. Eq. 8):
 fitting `1-P_gs` vs. `t_a` on semilog axes, restricted to each combo's
 pre-peak (coherent) window found via `first_local_min` (the *first* local
@@ -292,3 +439,75 @@ above); `stage1_full.py` and the tau-calibration scripts all read that
 saved `s_c` back rather than re-solving `Gamma(s)=J_cal(s)*|J|` from
 scratch, so `a_theory(J)` is evaluated at exactly the `s_c` the hardware
 point actually used.
+
+## Extension: native topologies, chip regions, and a direct J-sign check (in progress)
+
+Per the advisor's suggestion, this experiment is being widened along three
+axes beyond the original ring/chain sweep -- no hardware time has been
+spent on any of this yet; code is in place, results are TBD.
+
+- **More topologies, discovered rather than hand-picked.**
+  `discover_native_topologies.py` (new, costs no QPU anneal time -- only a
+  live edgelist query, then pure-Python graph work) randomly samples many
+  connected 6-physical-qubit windows across the whole chip and takes each
+  window's real **induced subgraph** (every actual coupler among those 6
+  qubits) as its native shape. This is a different philosophy than
+  `find_native_embedding` above, which starts from an abstract target
+  shape (ring_J/chain_J) and asks minorminer to embed it *somewhere*; here
+  we start from a physical region and ask what shape it naturally gives.
+  Windows are grouped into graph-isomorphism classes (Weisfeiler-Lehman
+  hash bucketing + exact `nx.is_isomorphic` to resolve collisions), and the
+  result is written to `results/native_topology_catalog.csv` (one row per
+  distinct shape, with how many chip regions realize it) and
+  `results/native_topology_instances.csv` (every individual instance, for
+  picking specific regions). Nothing here is auto-added to the real sweep.
+- **Chip regions, from the same mechanism, not a separate search.**
+  Distinct windows that land on different physical qubits but turn out
+  isomorphic automatically become that shape's available "regions" -- so
+  the topology-discovery and region-sampling asks are answered by one
+  random-sampling process, not two. This generalizes the one-off approach
+  `second_embedding_check.py` already used for ring/J=1x (see Stage 2
+  above) into something systematic and automatic. Topology is a
+  *consequence* of which region you land in, not chosen independently of
+  it -- there's no fixed number of "zones" walked ahead of time; the
+  sampling budget (default 20,000 offline draws) just determines how
+  thorough the catalog is before you pick from it.
+- **Selecting what actually runs on hardware.** After reviewing
+  `native_topology_catalog.csv`, hand-pick a subset (a starting budget of
+  ~8-12 shapes x ~3 regions each was suggested, comparable in size to the
+  existing ring/chain sweep, but this is not enforced by the code) and save
+  it as `results/native_topologies_selected.json` -- a list of `{"name",
+  "physical_qubits", "edges_logical"}` entries copied from the instances
+  CSV. `config.load_native_topologies()` picks this up automatically (empty
+  dict, i.e. no change in behavior, if the file doesn't exist yet);
+  `config.build_h_J` and `submit_hardware.get_sampler` handle these
+  uniformly alongside ring/chain, except native topologies skip the
+  minorminer search entirely (their physical qubits are already fixed by
+  how they were discovered).
+- **Both signs of J, checked directly -- ring/chain only.** The Findings
+  section above *argues*, via King et al.'s even-length AF/FM
+  gauge-equivalence, that the auto-picked sign (ferromagnetic, for more
+  hardware headroom) shouldn't matter physically. `config.J_SIGN_TOPOLOGIES
+  = {"ring", "chain"}` now makes this checked empirically instead: for
+  these two topologies specifically (both even, so the gauge argument
+  actually applies), `config.experiment_grid_with_sign()` emits explicit
+  `+1` and `-1` rows (via `solve_s_c_and_J`'s existing `prefer_sign`
+  parameter) instead of the single auto-picked one. Not applied to newly
+  discovered native topologies -- there's no guarantee an arbitrary
+  discovered shape has the same even-length gauge symmetry, and testing it
+  there isn't currently planned. `submit_hardware.run_point` now records
+  the sign actually used (`j_sign` column: `"+"`, `"-"`, or `"auto"`) in
+  every output row.
+  **Result and caveat (2026-09-24).** The check did not confirm the gauge argument on the hardware: at equal programmed
+  |J| the +/-J curves of ring/chain differ by 0.012 per point on average (0.08-0.10 at the shortest anneals;
+  `results/stage1b_systematics.csv`), and the RMS to the closed system with the ferromagnetic sign is about twice that with
+  the antiferromagnetic one at J=1x (chain 0.057/0.031, ring 0.040/0.019; notebook 16.4) -- in shapes that are not
+  frustrated. The closed system cannot produce that difference, so it is a hardware property (a sign-dependent control
+  error or bias). `config.J_SIGN_TOPOLOGIES` was later widened to the two frustrated native shapes (`e6_c26`, `e8_c37`, where
+  AF is a physically different problem), so both signs exist for **4 of the 13 shapes**. The other nine were run only with
+  the auto-picked FM sign: six bipartite native shapes (classes 0, 1, 15, 16, 25, 32; AF and FM gauge-equivalent in theory)
+  and three non-bipartite, non-degenerate ones (classes 54, 66, 59; AF is a different problem there and was not
+  measured). Their results therefore carry a sign-dependent systematic of the size above -- with the sign that deviates
+  more -- that could not be measured shape by shape; the sign contrast is shown only where it was measured, not because
+  those are the only shapes where it may matter. Running AF on the remaining nine would close the gap (not done). See the
+  caveat in notebook 16.3.

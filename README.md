@@ -154,18 +154,23 @@ print("final entropy =", entropy(result.rho[-1]))
 
 ## Conventions / gotchas
 
-- **Units**: `ħ = 1` throughout; the D-Wave `A(s)`, `B(s)` (given in GHz)
-  are used directly as the Hamiltonian in `dρ/dt = -i[H,ρ]` with time in
-  nanoseconds (`GHz * ns` is dimensionless). See the docstring in
-  `seaqt/dwave.py` if you need to double check the angular- vs
-  linear-frequency convention.
+- **Units**: `ħ = 1` throughout, time in nanoseconds. The D-Wave schedule
+  columns are `A(s)/h` and `B(s)/h` in GHz (a *linear* frequency, E/h), so
+  the Hamiltonian in `dρ/dt = -i[H,ρ]` is `H = 2π · H_GHz` in rad/ns;
+  `hamiltonian_1qubit`/`hamiltonian_nqubit` apply the `2π` (`freq_to_angular`,
+  pass `1.0` only to reproduce results computed before the fix, which
+  used the GHz values directly). `AnnealSchedule.A/.B` still return the raw
+  GHz values. See the docstring in `seaqt/dwave.py`.
 - **Sign convention for `h`**: D-Wave's Ising term is `+B(s)/2 * hᵢ * σz`
   (no leading minus sign), so the ground state is `|0⟩` for `hᵢ < 0` and
   `|1⟩` for `hᵢ > 0` — the opposite of what you might expect if you're
   used to `H = -h σz`.
-- **`beta_from_kelvin`** converts a physical bath temperature to the `β`
-  matching the (GHz, ns) convention above (so it comes out in ns); D-Wave
-  QPUs run at roughly 13–20 mK.
+- **`beta_from_kelvin`** converts a physical bath temperature to
+  `β = ħ/(k_B T)` in ns, matching the angular-frequency `H` above (`β·H` is
+  dimensionless); D-Wave QPUs run at roughly 13–20 mK. At those
+  temperatures and D-Wave's energy scales the local SEAQT dissipator
+  (`local_seaqt_dissipator*`) is only positivity-safe for large `τ` (a few
+  hundred ns for a 20 ns anneal) — see notebook sections 9–10.
 - **Degenerate eigenvalues, and why `bath_dissipator` handles them well.**
   `bath_dissipator` computes `ln ρ` via `ρ`'s own eigendecomposition
   (`numpy.linalg.eigh`). An earlier fixed-energy dissipator explored in

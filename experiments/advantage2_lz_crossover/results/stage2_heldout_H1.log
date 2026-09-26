@@ -1,0 +1,94 @@
+held-out: tau=7.0, s_f = 0.45, T=20.0 mK: 1472 unique anneals, 0 done, 1472 to go on 11 workers
+  25/1472  343s elapsed, ETA 19839s
+  50/1472  470s elapsed, ETA 13364s
+  75/1472  621s elapsed, ETA 11559s
+  100/1472  754s elapsed, ETA 10340s
+  125/1472  887s elapsed, ETA 9562s
+  150/1472  1006s elapsed, ETA 8868s
+  175/1472  1103s elapsed, ETA 8174s
+  200/1472  1189s elapsed, ETA 7560s
+  225/1472  1289s elapsed, ETA 7146s
+  250/1472  1369s elapsed, ETA 6691s
+  275/1472  1476s elapsed, ETA 6426s
+  300/1472  1531s elapsed, ETA 5981s
+  325/1472  1559s elapsed, ETA 5502s
+  350/1472  1626s elapsed, ETA 5213s
+  375/1472  1708s elapsed, ETA 4997s
+  400/1472  1792s elapsed, ETA 4802s
+  425/1472  1849s elapsed, ETA 4555s
+  450/1472  1920s elapsed, ETA 4360s
+  475/1472  1965s elapsed, ETA 4124s
+  500/1472  1999s elapsed, ETA 3887s
+  525/1472  2039s elapsed, ETA 3677s
+  550/1472  2103s elapsed, ETA 3526s
+  575/1472  2154s elapsed, ETA 3361s
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\andre\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andre\OneDrive\Documentos\GitHub\SEAQT-quantum-annealing-evolution\experiments\advantage2_lz_crossover\calibrate_tau_freezeout.py", line 279, in _sim_p
+    _, _, _, _, _, _, p, me, dt = simulate(("heldout", topology, j_dimless, ta, tau, s_f_eff, temp_mk))
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andre\OneDrive\Documentos\GitHub\SEAQT-quantum-annealing-evolution\experiments\advantage2_lz_crossover\calibrate_tau_freezeout.py", line 113, in simulate
+    res = evolve_bath_split(rho0, hamiltonian=H, t_span=(0.0, ta), beta=beta, rate=rate, dt=dt, n_points=12)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andre\OneDrive\Documentos\GitHub\SEAQT-quantum-annealing-evolution\seaqt\core.py", line 370, in evolve_bath_split
+    w, v = np.linalg.eigh(h)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\andre\OneDrive\Documentos\GitHub\SEAQT-quantum-annealing-evolution\env\Lib\site-packages\numpy\linalg\_linalg.py", line 1654, in eigh
+    w, vt = gufunc(a, signature=signature)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\andre\OneDrive\Documentos\GitHub\SEAQT-quantum-annealing-evolution\env\Lib\site-packages\numpy\linalg\_linalg.py", line 150, in _raise_linalgerror_eigenvalues_nonconvergence
+    raise LinAlgError("Eigenvalues did not converge")
+numpy.linalg.LinAlgError: Eigenvalues did not converge
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\andre\OneDrive\Documentos\GitHub\SEAQT-quantum-annealing-evolution\experiments\advantage2_lz_crossover\calibrate_tau_freezeout.py", line 405, in <module>
+    heldout(a.tau, a.sf, a.sf_offset, a.temp, a.js, a.workers)
+  File "C:\Users\andre\OneDrive\Documentos\GitHub\SEAQT-quantum-annealing-evolution\experiments\advantage2_lz_crossover\calibrate_tau_freezeout.py", line 314, in heldout
+    for k, (topo, j, ta, tau_, s_f_, off, T, s_used, p, me, dt) in enumerate(
+                                                                   ^^^^^^^^^^
+  File "C:\Users\andre\AppData\Local\Programs\Python\Python312\Lib\multiprocessing\pool.py", line 873, in next
+    raise value
+numpy.linalg.LinAlgError: Eigenvalues did not converge
+held-out: tau=7.0, s_f = 0.45, T=20.0 mK: 1472 unique anneals, 597 done, 875 to go on 11 workers
+  25/875  20s elapsed, ETA 672s
+  50/875  27s elapsed, ETA 443s
+  75/875  33s elapsed, ETA 355s
+  100/875  39s elapsed, ETA 305s
+  125/875  45s elapsed, ETA 273s
+  150/875  51s elapsed, ETA 248s
+  175/875  59s elapsed, ETA 234s
+  200/875  67s elapsed, ETA 225s
+  225/875  76s elapsed, ETA 220s
+  250/875  84s elapsed, ETA 209s
+  275/875  91s elapsed, ETA 198s
+  300/875  97s elapsed, ETA 187s
+  325/875  104s elapsed, ETA 176s
+  350/875  112s elapsed, ETA 169s
+  375/875  117s elapsed, ETA 157s
+  400/875  124s elapsed, ETA 147s
+  425/875  130s elapsed, ETA 137s
+  450/875  136s elapsed, ETA 129s
+  475/875  145s elapsed, ETA 122s
+  500/875  150s elapsed, ETA 113s
+  525/875  156s elapsed, ETA 104s
+  550/875  161s elapsed, ETA 95s
+  575/875  167s elapsed, ETA 87s
+  600/875  172s elapsed, ETA 79s
+  625/875  177s elapsed, ETA 71s
+  650/875  182s elapsed, ETA 63s
+  675/875  187s elapsed, ETA 55s
+  700/875  191s elapsed, ETA 48s
+  725/875  194s elapsed, ETA 40s
+  750/875  198s elapsed, ETA 33s
+  775/875  201s elapsed, ETA 26s
+  800/875  205s elapsed, ETA 19s
+  825/875  208s elapsed, ETA 13s
+  850/875  211s elapsed, ETA 6s
+  875/875  215s elapsed, ETA 0s

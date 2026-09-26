@@ -51,10 +51,38 @@ def hermitize(a: Operator) -> Operator:
     return 0.5 * (a + a.conj().T)
 
 
+def eigh_robust(a: Operator):
+    """`np.linalg.eigh` with a fallback. numpy's LAPACK divide-and-conquer driver (zheevd) occasionally raises
+    "Eigenvalues did not converge" on a perfectly finite, exactly Hermitian matrix with a highly degenerate spectrum
+    (seen on the 64x64 Hamiltonian of a 6-qubit Ising instance at s ~ 0.99, where H is nearly diagonal and its
+    problem term has many equal levels); the QR driver (zheev) handles it (residual ~1e-13)."""
+    try:
+        return np.linalg.eigh(a)
+    except np.linalg.LinAlgError:
+        from scipy.linalg import eigh
+        return eigh(a, driver="ev")
+
+
+def eigvalsh_robust(a: Operator):
+    try:
+        return np.linalg.eigvalsh(a)
+    except np.linalg.LinAlgError:
+        return eigh_robust(a)[0]
+
+
+def svd_robust(a: Operator):
+    """`np.linalg.svd` (zgesdd, divide and conquer) with a fallback to the QR-based zgesvd."""
+    try:
+        return np.linalg.svd(a)
+    except np.linalg.LinAlgError:
+        from scipy.linalg import svd
+        return svd(a, lapack_driver="gesvd")
+
+
 def eig_hermitian(rho: Operator):
     """Eigen-decompose a Hermitian matrix, clipping tiny negative eigenvalues
     (roundoff) to zero. Returns (eigenvalues, eigenvectors-as-columns)."""
-    p, u = np.linalg.eigh(hermitize(rho))
+    p, u = eigh_robust(hermitize(rho))
     p = np.clip(p.real, 0.0, None)
     return p, u
 
@@ -163,39 +191,11 @@ def free_energy(rho: Operator, h: Operator, beta: float) -> float:
 def gibbs_state(h: Operator, beta: float) -> Operator:
     """The canonical equilibrium state exp(-beta H)/Z that `bath_dissipator`
     relaxes toward (for a static H)."""
-    w, v = np.linalg.eigh(hermitize(h))
+    w, v = eigh_robust(hermitize(h))
     w = w - w.min()  # shift for numerical stability of exp(); Z unaffected
     weights = np.exp(-beta * w)
     weights /= weights.sum()
     return hermitize(v @ np.diag(weights) @ v.conj().T)
-
-
-def _pack(rho: Operator) -> np.ndarray:
-    """Flatten a Hermitian dxd complex matrix into a real vector of the
-    d^2 independent real degrees of freedom (diagonal + upper triangle)."""
-    d = rho.shape[0]
-    out = np.empty(d * d)
-    out[:d] = np.real(np.diag(rho))
-    k = d
-    for i in range(d):
-        for j in range(i + 1, d):
-            out[k] = rho[i, j].real
-            out[k + 1] = rho[i, j].imag
-            k += 2
-    return out
-
-
-def _unpack(vec: np.ndarray, d: int) -> Operator:
-    rho = np.zeros((d, d), dtype=complex)
-    rho[np.diag_indices(d)] = vec[:d]
-    k = d
-    for i in range(d):
-        for j in range(i + 1, d):
-            re, im = vec[k], vec[k + 1]
-            rho[i, j] = re + 1j * im
-            rho[j, i] = re - 1j * im
-            k += 2
-    return rho
 
 
 @dataclass
@@ -236,18 +236,178 @@ def evolve(
     diss_fn = dissipator if dissipator is not None else (lambda t, rho, h: 0.0)
 
     def rhs(t, y):
-        rho = _unpack(y, d)
+        rho = hermitize(y.reshape(d, d))
         h = hermitize(hamiltonian(t))
         unitary = -1j / hbar * (h @ rho - rho @ h)
         diss = diss_fn(t, rho, h)
-        drho = unitary + diss
-        return _pack(drho.real + 1j * drho.imag)  # drho is Hermitian already
+        return hermitize(unitary + diss).ravel()
 
-    y0 = _pack(hermitize(rho0))
+    y0 = hermitize(rho0).astype(complex).ravel()
     t_eval = np.linspace(t_span[0], t_span[1], n_points)
     sol = solve_ivp(rhs, t_span, y0, t_eval=t_eval, rtol=rtol, atol=atol, method="RK45")
     if not sol.success:
         raise RuntimeError(f"Integration failed: {sol.message}")
 
-    rhos = [hermitize(_unpack(sol.y[:, k], d)) for k in range(sol.y.shape[1])]
+    rhos = [hermitize(sol.y[:, k].reshape(d, d)) for k in range(sol.y.shape[1])]
     return EvolutionResult(t=sol.t, rho=rhos)
+
+
+def evolve_bath_factorized(
+    rho0: Operator,
+    hamiltonian: Callable[[float], Operator],
+    t_span: tuple[float, float],
+    beta: float,
+    rate: float | Callable[[float], float],
+    n_points: int = 400,
+    hbar: float = 1.0,
+    rtol: float = 1e-9,
+    atol: float = 1e-12,
+    log_floor: float = 1e-30,
+    method: str = "DOP853",
+) -> EvolutionResult:
+    """Integrate  drho/dt = -i/hbar [H(t), rho] - (beta rate(t) / 2) {F(rho, H, beta), rho}
+    (the `bath_dissipator` equation, with rate = 1/tau) through a factor of rho.
+
+    Why not `evolve` + `bath_dissipator`: that equation has the form
+    drho/dt = A rho + rho A^dagger with A = -i H/hbar - (beta rate / 2) F(rho) and F Hermitian, so its exact
+    solution is rho(t) = G(t) rho0 G(t)^dagger with G' = A G, G(0) = 1 (G invertible). It keeps rho positive
+    (definite if rho0 is) for all time; Tr(rho) is conserved as well. Integrating the entries of rho itself
+    (as `evolve` does) does not respect that: the truncation error is additive, so eigenvalues far below
+    `atol` -- which the nonlinear -ln(rho) pumps up at rate ~ (-ln p)/tau -- drift negative, and once negative
+    they grow without bound (the log is floored, so the growth is not self-limiting; see
+    experiments/advantage2_lz_crossover/README.md). Here the state variable is Gamma with rho = Gamma Gamma^dagger
+    / Tr(Gamma Gamma^dagger) (Gamma(0) = rho0^(1/2)); G' = A G is linear given A, so
+    Gamma' = A Gamma, and rho is positive semidefinite by construction whatever the step size.
+
+    The eigenvalues of rho come from the SVD of Gamma (p_i = s_i^2), which resolves populations down to ~1e-32;
+    below `log_floor` the log is clipped. The floor is a modelling parameter only in the sense that
+    populations below it are not represented (the equation's pumping rate (-ln p)/tau is finite anyway, so
+    results should be insensitive to it -- test that on the observable you care about).
+
+    NOTE: a *pure* rho0 is a fixed point of this dissipator in exact arithmetic (S_op|psi> = 0), so it leaves
+    purity only through the floor -- make rho0 full rank (e.g. the Gibbs state of H(0), or
+    (1-eps)|psi><psi| + eps I/d) and treat that choice as part of the model.
+
+    Parameters as in `evolve`, plus
+    beta : bath inverse temperature (same units as 1/H)
+    rate : 1/tau, a float or a callable t -> 1/tau(t) (0 switches the bath off, e.g. after a freeze-out point)
+    """
+    from scipy.integrate import solve_ivp
+
+    d = rho0.shape[0]
+    rate_fn = rate if callable(rate) else (lambda t, _r=float(rate): _r)
+    identity = np.eye(d, dtype=complex)
+
+    def rhs(t, y):
+        g = y.reshape(d, d)
+        h = hermitize(hamiltonian(t))
+        k = rate_fn(t)
+        a = (-1j / hbar) * h
+        if k != 0.0:
+            u, s, _ = svd_robust(g)
+            p = s * s
+            p = p / p.sum()
+            s_eig = -np.log(np.maximum(p, log_floor))
+            rho = (u * p) @ u.conj().T
+            e_mean = float(np.real(np.trace(h @ rho)))
+            s_op = (u * s_eig) @ u.conj().T
+            s_mean = float(p @ s_eig)
+            f_hat = (h - e_mean * identity) - (s_op - s_mean * identity) / beta
+            a = a - (0.5 * beta * k) * hermitize(f_hat)
+        return (a @ g).ravel()
+
+    p0, u0 = eigh_robust(hermitize(rho0))
+    g0 = (u0 * np.sqrt(np.clip(p0.real, 0.0, None))) @ u0.conj().T
+    g0 = g0 / np.sqrt(np.real(np.trace(g0 @ g0.conj().T)))
+    t_eval = np.linspace(t_span[0], t_span[1], n_points)
+    sol = solve_ivp(rhs, t_span, g0.astype(complex).ravel(), t_eval=t_eval, rtol=rtol, atol=atol, method=method)
+    if not sol.success:
+        raise RuntimeError(f"Integration failed: {sol.message}")
+
+    rhos = []
+    for k in range(sol.y.shape[1]):
+        g = sol.y[:, k].reshape(d, d)
+        r = g @ g.conj().T
+        rhos.append(hermitize(r / np.real(np.trace(r))))
+    return EvolutionResult(t=sol.t, rho=rhos)
+
+
+def evolve_bath_split(
+    rho0: Operator,
+    hamiltonian: Callable[[float], Operator],
+    t_span: tuple[float, float],
+    beta: float,
+    rate: float | Callable[[float], float],
+    dt: float,
+    n_points: int = 400,
+    hbar: float = 1.0,
+    log_floor: float = 1e-30,
+) -> EvolutionResult:
+    """Fixed-step version of `evolve_bath_factorized` (same equation, same factor Gamma, rho = Gamma Gamma^dagger),
+    for the regime where H(t) oscillates much faster than the bath acts (e.g. 6-qubit D-Wave anneals, where an
+    adaptive Runge-Kutta needs steps ~1e-3 ns to resolve exp(-i H t) and a 64 ns anneal takes ~15 minutes).
+
+    Each step of length dt is a Strang splitting  Gamma <- U(dt/2) D(dt) U(dt/2) Gamma  with
+      U(dt/2) = exp(-i H(t_mid) dt / (2 hbar))            exact, via eigh(H)
+      D(dt)   = exp(-(beta rate(t_mid) / 2) F(rho*) dt)   with F built from a midpoint predictor rho*
+    Both factors are invertible linear maps on Gamma, so rho stays positive semidefinite for ANY dt (the
+    accuracy, not the positivity, depends on dt) and Tr(rho) is renormalised each step (it is conserved by the
+    equation). The scheme is second order: check convergence by halving dt on the observable you report.
+
+    Returns the state at ~n_points evenly spaced steps (always including t_span[1]).
+    """
+    d = rho0.shape[0]
+    rate_fn = rate if callable(rate) else (lambda t, _r=float(rate): _r)
+    identity = np.eye(d, dtype=complex)
+    t0, t1 = float(t_span[0]), float(t_span[1])
+    n_steps = max(1, int(np.ceil((t1 - t0) / dt - 1e-12)))
+    dt = (t1 - t0) / n_steps
+    stride = max(1, n_steps // max(1, n_points - 1))
+
+    def f_of(g, h):
+        u, s, _ = svd_robust(g)
+        p = s * s
+        p = p / p.sum()
+        s_eig = -np.log(np.maximum(p, log_floor))
+        rho = (u * p) @ u.conj().T
+        e_mean = float(np.real(np.trace(h @ rho)))
+        s_op = (u * s_eig) @ u.conj().T
+        s_mean = float(p @ s_eig)
+        return hermitize((h - e_mean * identity) - (s_op - s_mean * identity) / beta)
+
+    def exp_herm(a, x):
+        """exp(x * a) for Hermitian a and real or imaginary scalar x."""
+        w, v = eigh_robust(a)
+        return (v * np.exp(x * w)) @ v.conj().T
+
+    p0, u0 = eigh_robust(hermitize(rho0))
+    g = (u0 * np.sqrt(np.clip(p0.real, 0.0, None))) @ u0.conj().T
+    g = g / np.sqrt(np.real(np.trace(g @ g.conj().T)))
+    g = g.astype(complex)
+
+    ts, rhos = [t0], []
+
+    def snapshot(gm):
+        r = gm @ gm.conj().T
+        rhos.append(hermitize(r / np.real(np.trace(r))))
+
+    snapshot(g)
+    for step in range(n_steps):
+        t_mid = t0 + (step + 0.5) * dt
+        h = hermitize(hamiltonian(t_mid))
+        w, v = eigh_robust(h)
+        half = (v * np.exp((-0.5j * dt / hbar) * w)) @ v.conj().T
+        g = half @ g
+        k = rate_fn(t_mid)
+        if k != 0.0:
+            c = 0.5 * beta * k
+            f1 = f_of(g, h)
+            g_pred = exp_herm(f1, -0.5 * c * dt) @ g
+            f2 = f_of(g_pred, h)
+            g = exp_herm(f2, -c * dt) @ g
+        g = half @ g
+        g = g / np.sqrt(np.real(np.trace(g @ g.conj().T)))
+        if (step + 1) % stride == 0 or step == n_steps - 1:
+            ts.append(t0 + (step + 1) * dt)
+            snapshot(g)
+    return EvolutionResult(t=np.array(ts), rho=rhos)
