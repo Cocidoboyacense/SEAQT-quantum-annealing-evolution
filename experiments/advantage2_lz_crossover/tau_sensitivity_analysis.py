@@ -51,11 +51,23 @@ def closed_curve(M, topo, jm, grid):
     return np.clip(cca._sel(M, topo, jm).query("model == @cca.M_UNI").set_index("t_anneal_ns").om.reindex(grid).values, OM_MIN, None)
 
 
+RING25_LOG = RES / "chip_campaign_ring25x_log.csv"
+
+
 def readout_bound(d: pd.DataFrame) -> pd.DataFrame:
-    """Per (sign, tile): the smallest 1-P_GS (mean over takes) of any problem / t_a on those qubits."""
+    """Per (sign, tile): the smallest 1-P_GS (mean over takes) of any campaign problem / t_a on those qubits, capped,
+    once the ring 2.5x takes exist on the same placements (ring25_check.py), by the smallest value of their floor
+    pooled over all placements and takes (1.9e-4): readout does not depend on t_a, so it cannot exceed it."""
     g = d.groupby(["topology", "j_multiple", "j_sign", "t_anneal_ns", "tile"]).p_gs.mean().reset_index()
     g["om"] = 1 - g.p_gs
-    return g.groupby(["j_sign", "tile"]).om.min().rename("eps_max").reset_index()
+    b = g.groupby(["j_sign", "tile"]).om.min().rename("eps_max").reset_index()
+    if RING25_LOG.exists():
+        r = pd.read_csv(RING25_LOG, dtype={"j_sign": str})
+        r = r[r.t_anneal_ns >= 31.0]
+        r["fail"] = (1 - r.p_gs) * r.num_reads
+        cap = r.groupby(["j_sign", "t_anneal_ns"]).apply(lambda x: x.fail.sum() / x.num_reads.sum()).groupby(level=0).min()
+        b["eps_max"] = np.minimum(b.eps_max, b.j_sign.map(cap))
+    return b
 
 
 # ------------------------------------------------------------------------------------------------ fitting

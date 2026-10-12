@@ -1,4 +1,4 @@
-"""Follow-ups to tau_sensitivity.py (no QPU):
+﻿"""Follow-ups to tau_sensitivity.py (no QPU):
 
   gibbs    1-P_GS of Gibbs(H(s), 20 mK) on a fine s grid for each campaign problem, and the s* at which it equals
            the hardware's floor at each floor t_a (the 'follow equilibrium, freeze at s*' picture: no dynamics needed)
@@ -33,8 +33,12 @@ from seaqt.operators import ising_hamiltonian
 
 RES = ts.RESULTS_DIR
 LOG = RES / "tau_budget_log.csv"
-# fixed budgets from the interpolation test (sign -; sign + within 3%), see notebook 16.10
+# fixed budgets from the interpolation test (sign -; sign + within 3%) with the FIRST readout bound (9.5e-4). These
+# are the values the pre-registered ring 2.5x prediction was built from (commit 6a0a6dc): keep them as they are.
 B_INTERP = {("ring", 1.0): 6.46, ("chain", 1.0): 8.41, ("ring", 1.75): 4.07}
+# after the ring 2.5x takes bounded readout at <= 1.9e-4 (ring25_check.py), the ring 1.75x budget moves to 5.5; the
+# 1x ones are unchanged (the ring needs no readout; the chain's optimum stays within the +-25% grid)
+B_CONFIRM = {("ring", 1.0): 6.46, ("chain", 1.0): 8.41, ("ring", 1.75): 5.5}
 B_FACTORS = (0.8, 1.0, 1.25)
 
 
@@ -86,7 +90,7 @@ def gibbs(verbose=True):
 def gap(verbose=True):
     gm = pd.read_csv(RES / "true_gap_min_check.csv")
     rows = []
-    for (topo, jm), B in B_INTERP.items():
+    for (topo, jm), B in B_CONFIRM.items():
         r = gm[(gm.topology == topo) & np.isclose(gm.j_multiple, jm)].iloc[0]
         rows.append(dict(problem=f"{topo} J={jm:g}x", B=B, gap_min_GHz=r.gap_min_true, gap_at_sc_GHz=r.gap_at_sc_king,
                          gap_over_kT=r.gap_min_true / (config.K_BT_OVER_H_MHZ / 1000.0), B_times_gap=B * r.gap_min_true))
@@ -105,7 +109,7 @@ def _init():
 
 def run(workers: int = 10):
     tasks = []
-    for (topo, jm), B0 in B_INTERP.items():
+    for (topo, jm), B0 in B_CONFIRM.items():
         s_c, j_abs, grid = ts.problem_info(topo, jm)
         for f in B_FACTORS:
             for ta in grid:
@@ -144,7 +148,7 @@ def analyze(verbose=True):
     L = pd.read_csv(LOG)
     st0 = pd.read_csv(RES / "tau_sensitivity_step0.csv")
     rows = []
-    for (topo, jm), B0 in B_INTERP.items():
+    for (topo, jm), B0 in B_CONFIRM.items():
         for sg in ("-", "+"):
             ss = cca._sel(s, topo, jm, sg).sort_values("t_anneal_ns")
             hw = np.clip((1 - ss.p_median).values[-tsa.N_FLOOR:], 1e-9, None)

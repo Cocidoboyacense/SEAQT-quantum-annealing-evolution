@@ -63,5 +63,48 @@ def main():
     return T
 
 
+def per_placement_exponent(verbose: bool = True):
+    """Heterogeneity vs intrinsic: the floor exponent h (1-P ~ t_a^h) fitted placement by placement on the anneal times
+    at and after the hardware's 1-P minimum (64.5, 96.7, 145 ns at J=1x, where readout is <= ~2% of the floor), compared
+    with the exponent of the chip-mean curve; the noise part of the spread from odd vs even takes."""
+    d, s, M, A = cca.compute(verbose=False)
+    full = cca.complete_takes(d)
+    d = d[d.take_id.isin(full)]
+    ta = [64.479, 96.718, 145.077]
+    rows, per_tile = [], []
+    for topo in ("ring", "chain"):
+        for sg in ("-", "+"):
+            x = d[(d.topology == topo) & np.isclose(d.j_multiple, 1.0) & (d.j_sign == sg) & d.t_anneal_ns.isin(ta)].copy()
+            x["om"] = 1 - x.p_gs
+            lt = np.log(ta)
+
+            def slopes(sub):
+                m = sub.groupby(["tile", "t_anneal_ns"]).om.mean().unstack()[ta]
+                return pd.Series(np.polyfit(lt, np.log(m.values.T), 1)[0], index=m.index)
+            h_all = slopes(x)
+            h_a = slopes(x[x.take_id.isin(full[0::2])])
+            h_b = slopes(x[x.take_id.isin(full[1::2])])
+            noise_sd = float(np.std(h_a - h_b, ddof=1) / 2)          # sd of the noise in one half; /sqrt(2) more for all
+            mean_curve = x.groupby("t_anneal_ns").om.mean()[ta].values
+            h_chip = float(np.polyfit(lt, np.log(mean_curve), 1)[0])
+            total_sd = float(h_all.std())
+            noise_all = noise_sd / np.sqrt(2)
+            real_sd = float(np.sqrt(max(total_sd ** 2 - noise_all ** 2, 0.0)))
+            rows.append(dict(problem=f"{topo} J=1x", sign=sg, h_chip_mean_curve=h_chip, h_median=float(h_all.median()),
+                             h_p10=float(h_all.quantile(.1)), h_p90=float(h_all.quantile(.9)), sd_total=total_sd,
+                             sd_noise=noise_all, sd_real=real_sd,
+                             split_half_corr=float(np.corrcoef(h_a, h_b.reindex(h_a.index))[0, 1])))
+            per_tile.append(h_all.rename("h").reset_index().assign(problem=f"{topo} J=1x", sign=sg))
+    T = pd.DataFrame(rows)
+    T.to_csv(RES / "floor_exponent_per_placement.csv", index=False)
+    if verbose:
+        print(T.to_string(index=False, float_format=lambda v: f"{v:.3g}"))
+    return T, pd.concat(per_tile, ignore_index=True)
+
+
 if __name__ == "__main__":
-    main()
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "placements":
+        per_placement_exponent()
+    else:
+        main()
