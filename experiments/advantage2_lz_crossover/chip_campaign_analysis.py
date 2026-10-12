@@ -65,7 +65,10 @@ def _sel(df, topo, jm, sign=None):
 
 # ------------------------------------------------------------------------------------------------ data
 def load_hw() -> pd.DataFrame:
-    d = pd.read_csv(LOG, dtype={"take_id": str, "j_sign": str})
+    # the repository keeps the log gzipped (chip_campaign_log.csv.gz, 3 MB instead of 69 MB); chip_campaign.py appends
+    # to the plain csv, which is used when present
+    path = LOG if LOG.exists() else LOG.with_name(LOG.name + ".gz")
+    d = pd.read_csv(path, dtype={"take_id": str, "j_sign": str})
     d["t_anneal_ns"] = d.t_anneal_ns.round(3)
     return d
 
