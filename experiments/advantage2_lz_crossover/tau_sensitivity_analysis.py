@@ -44,7 +44,9 @@ def model_grid(runs: pd.DataFrame, topo: str, jm: float):
 def fine(taus, om):
     """om on TAU_FINE, linear in (ln tau, ln om), per t_a column."""
     lt, lo = np.log(taus), np.log(om)
-    return np.exp(np.column_stack([np.interp(np.log(TAU_FINE), lt, lo[:, k]) for k in range(om.shape[1])]))
+    f = np.exp(np.column_stack([np.interp(np.log(TAU_FINE), lt, lo[:, k]) for k in range(om.shape[1])]))
+    f[(TAU_FINE < taus.min() * (1 - 1e-9)) | (TAU_FINE > taus.max() * (1 + 1e-9))] = np.nan   # no extrapolation
+    return f
 
 
 def closed_curve(M, topo, jm, grid):
@@ -77,8 +79,9 @@ def fit(om_fine_floor: np.ndarray, om_hw: np.ndarray, eps_max: float):
     om_hw = np.clip(om_hw, OM_MIN, None)
     mod = 1 - (1 - om_fine_floor[:, None, :]) * (1 - eps[None, :, None])          # [tau, eps, pt]
     loss = np.mean(np.log10(np.clip(mod, OM_MIN, None) / om_hw) ** 2, axis=2)
-    i, j = np.unravel_index(np.argmin(loss), loss.shape)
-    return TAU_FINE[i], eps[j], float(np.sqrt(loss[i, j])), (i == 0), (i == len(TAU_FINE) - 1)
+    ok = np.flatnonzero(~np.isnan(loss[:, 0]))                # the tau range actually simulated for this problem
+    i, j = np.unravel_index(np.nanargmin(loss), loss.shape)
+    return TAU_FINE[i], eps[j], float(np.sqrt(loss[i, j])), (i == ok.min()), (i == ok.max())
 
 
 def fit_closed(om_closed_floor: np.ndarray, om_hw: np.ndarray, eps_max: float):
@@ -90,9 +93,11 @@ def fit_closed(om_closed_floor: np.ndarray, om_hw: np.ndarray, eps_max: float):
 
 
 # ------------------------------------------------------------------------------------------------ the steps
-def compute():
+def compute(runs: pd.DataFrame | None = None):
+    """runs: (topology, j_multiple, tau_ns, t_a_ns, p_gs) of the model to analyze; default the step-at-s_c global bath.
+    For another model set TAU_FINE to its tau range first (local_tau_sensitivity.py does)."""
     d, s, M, A = cca.compute(verbose=False)
-    runs = ts.all_runs()
+    runs = ts.all_runs() if runs is None else runs
     eb = readout_bound(d)
     full = cca.complete_takes(d)
     out = dict(d=d, s=s, M=M, runs=runs, eps_bound=eb)
@@ -129,8 +134,8 @@ def compute():
                 target = om_hw[m] - eb_ * (1 - om_hw[m])          # remove the fitted readout share
                 col = omf[:, m]
                 tau_t = np.nan
-                if target > 0 and col.min() < target < col.max():
-                    tau_t = float(TAU_FINE[int(np.argmin(np.abs(np.log(col) - np.log(target))))])
+                if target > 0 and np.nanmin(col) < target < np.nanmax(col):
+                    tau_t = float(TAU_FINE[int(np.nanargmin(np.abs(np.log(col) - np.log(target))))])
                 Ek = float(np.interp(np.log(tb), np.log(taus), E[:, m]))
                 rows1.append(dict(problem=label(topo, jm), sign=sg, t_a_ns=t, floor=m >= len(ta) - N_FLOOR,
                                   om_hw=om_hw[m], om_model_best=float(np.interp(np.log(tb), np.log(TAU_FINE), omf[:, m])),
@@ -175,11 +180,13 @@ def summarize(out):
 
 
 # ------------------------------------------------------------------------------------------------ figures
-def fig_curves(out):
+def fig_curves(out, show=None):
     """Model curves for several tau against the hardware median (sign -), each problem."""
     import matplotlib.pyplot as plt
     fig, axes = plt.subplots(1, 3, figsize=(18, 5.5), sharey=True)
-    show = (1.0, 2.0, 3.0, 5.0, 10.0, 30.0)
+    if show is None:
+        taus0 = out["grids"][ts.PROBLEMS[0]][0]
+        show = (1.0, 2.0, 3.0, 5.0, 10.0, 30.0) if taus0.max() <= 30 else tuple(taus0[np.linspace(0, len(taus0) - 1, 6).astype(int)])
     cmap = plt.cm.viridis(np.linspace(0, 0.9, len(show)))
     for ax, (topo, jm) in zip(axes, ts.PROBLEMS):
         taus, ta, om, _ = out["grids"][(topo, jm)]
