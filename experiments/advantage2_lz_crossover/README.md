@@ -8,6 +8,28 @@ coherent-to-incoherent crossover and compare against (a) the closed-system
 Landau-Zener formula computed from Advantage2's real calibration data, and
 (b) SEAQT's prediction for the same system.
 
+## Summary of results (state of 2026-10-12)
+
+The question: how far does SEAQT get in predicting what Advantage2_system1 does on small problems, and where does it
+fail? The detailed story, with every number and figure, is in `notebooks/seaqt_annealing_walkthrough.ipynb`, sections
+16-16.11; the talk is in `presentation/main.tex`. "Ideal case" below = closed SEAQT (exact unitary evolution).
+
+| Result | Where |
+|---|---|
+| The simulation reproduces King et al.'s Landau-Zener rate with no fit parameters (ratio 0.993; done with the Advantage_system5 schedule, the formula computed from the same schedule) | notebook 15 |
+| On the chip: coherent rise, an anti-Kibble-Zurek fall of $P_{GS}$ (regime II, minimum at 2-6 us) and a recovery; dense shapes saturate; frustrated shapes differ with the sign of J | exploratory campaign, 16.3 |
+| The ideal case follows the shape of the coherent regime, but the hardware's $1-P$ is 1.4-1.9x higher, on every one of 616 placements; the ideal case misses the floor entirely | 16.4, 16.9 |
+| The data are reliable: no crosstalk between placements, take-to-take variation = shot noise at short $t_a$, a chip-wide floor drift of 10-17% at long $t_a$, readout <= 1.9e-4 | 16.9, 16.10 |
+| A global bath switched off at the crossing $s_c$, or the local SEAQT dissipator, bring the floor from errors of ~100x to 1.2-3x; neither fits every problem | 16.5-16.8 |
+| $\tau$ is pinned to a few % within a problem, but is not a property of the chip (global: factor 1.6 between problems; local: >10x). A fixed relaxation budget per unit of $s$ fits the global model in-sample, but a **pre-registered** prediction for the ring 2.5x (commit 6a0a6dc) failed | 16.10, 16.11 |
+| The hardware's thermal error grows sublinearly, $t_a^{0.70-0.87}$, with the same exponent in every placement; no model has that shape (global ~2.8 or ~0, local 1.0). Hardware and both models make only minimum-order errors | 16.10, 16.11 |
+
+Open: what produces the sublinear growth (a distribution of relaxation rates, low-frequency noise); which single-domain
+states the chip populates (needs bitstrings); the link to a topological speed-limit bound on $\tau$.
+
+The sections below record how the experiment was built and run, in chronological order; the "Results so far" part keeps
+the earlier stages, with the pre-units-fix results marked as superseded.
+
 ## Status
 
 Both `config.py` placeholders are now filled in and verified end-to-end
@@ -185,7 +207,9 @@ chain:  +0.020  (~2% of [0,1], all 5 J's
 
 ## Results so far
 
-> **Superseded (2026-09-19).** Everything below this box was computed with the
+> **Units fix (2026-09-19).** The results in the section marked *Superseded* further down
+> ("Coherent-window fit vs. closed-system theory", "Stage 1", the first "Stage 2" attempts and the
+> Advantage_system4 comparison) were computed with the
 > schedule's GHz values used as angular frequencies -- a missing factor 2*pi
 > (the columns are `A(s)/h`, `B(s)/h`; `seaqt.dwave` now applies it). With the
 > corrected units real hardware is ~2x *slower* than the closed-system LZ
@@ -332,6 +356,15 @@ curve throughout the coherent window, not only at long `t_a` (ring at 5 ns: hard
 0.041). `e9 c54`/`e10 c66`/`e11 c59` have nothing to show at J=2.5x (already saturated there); `e6 c26`/`e8 c37`
 (both signs) are the busiest panels.
 
+### Superseded: results before the units fix (kept for the record, numbers void)
+
+> Everything from here to "Reuse, don't recompute, s_c" used the old units (no 2*pi) and is **void** -- in
+> particular "hardware faster than theory" and "hardware outperforms SEAQT-unitary" are reversed by the fix. The
+> corrected numbers are in the "Units fix" box above: `a_emp/a_theory` = 0.27-0.60 (hardware ~2x *slower*),
+> hardware at 0.35-0.70 of the SEAQT-unitary rate, SEAQT-unitary/theory 0.97-0.98 on the ring. Only the
+> hardware-only comparison (second embedding: `a_empirical` 0.0672 vs 0.0722) does not depend on the units.
+> The dissipator conclusions below were also replaced: see "Stage 2, option 1" and later.
+
 **Coherent-window fit vs. closed-system theory** (King et al. Eq. 8):
 fitting `1-P_gs` vs. `t_a` on semilog axes, restricted to each combo's
 pre-peak (coherent) window found via `first_local_min` (the *first* local
@@ -431,6 +464,8 @@ parallel comparison while Advantage2_system1 is unavailable; that run's
 suggestive of (though not proof of) the same per-physical-qubit-specific
 mechanism.
 
+*(End of the superseded material.)*
+
 **Reuse, don't recompute, s_c.** Each row of `exploratory.csv`/
 `refinement.csv` has its own `s_c` column (computed once, as a byproduct of
 `config.solve_s_c_and_J` when the point was submitted, and already
@@ -440,11 +475,13 @@ saved `s_c` back rather than re-solving `Gamma(s)=J_cal(s)*|J|` from
 scratch, so `a_theory(J)` is evaluated at exactly the `s_c` the hardware
 point actually used.
 
-## Extension: native topologies, chip regions, and a direct J-sign check (in progress)
+## Extension: native topologies, chip regions, and a direct J-sign check (done)
 
-Per the advisor's suggestion, this experiment is being widened along three
-axes beyond the original ring/chain sweep -- no hardware time has been
-spent on any of this yet; code is in place, results are TBD.
+Per the advisor's suggestion, this experiment was widened along three
+axes beyond the original ring/chain sweep. It has since been run on the
+hardware (exploratory and refinement campaigns: 11 native shapes x 3
+regions, 215 combinations; results in notebook 16.3-16.4). The text below
+is the design as written before the runs.
 
 - **More topologies, discovered rather than hand-picked.**
   `discover_native_topologies.py` (new, costs no QPU anneal time -- only a
