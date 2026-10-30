@@ -1,342 +1,8318 @@
 [
   {
-    "topology": "ring",
+    "topology": "chain",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.719,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 11.916,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 18.397,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 28.4,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 43.844,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 65.767,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 98.65,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 8.909,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.876,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 28.288,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 50.406,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 89.818,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 134.728,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 202.091,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.919,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 12.541,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 19.862,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 31.456,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 49.818,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 74.727,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 112.09,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.919,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 12.541,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 19.862,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 31.456,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 49.818,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 74.727,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 112.09,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.346,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.792,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.855,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 23.294,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 34.222,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 51.333,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 77.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.346,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.792,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.855,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 23.294,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 34.222,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 51.333,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 77.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.233,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.769,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.684,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 12.071,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.047,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 22.571,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 33.856,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.025,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.259,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 8.747,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.539,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 12.699,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 19.048,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 28.573,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.233,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.769,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 9.684,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 12.071,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.047,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 22.571,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 33.856,
+    "j_sign": 1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.771,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.661,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.688,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.873,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.242,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.362,
+    "j_sign": -1
+  },
+  {
+    "topology": "chain",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 23.044,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e10_c66_r0",
     "j_multiple": 1.0,
     "t_anneal_ns": 5.0
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 1.0,
-    "t_anneal_ns": 8.338
+    "t_anneal_ns": 7.416
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 1.0,
-    "t_anneal_ns": 13.904
+    "t_anneal_ns": 11.0
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 1.0,
-    "t_anneal_ns": 23.187
+    "t_anneal_ns": 16.315
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 1.0,
-    "t_anneal_ns": 38.666
+    "t_anneal_ns": 24.199
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 1.0,
-    "t_anneal_ns": 64.479
+    "t_anneal_ns": 35.893
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 1.0,
-    "t_anneal_ns": 96.718
+    "t_anneal_ns": 53.839
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 1.0,
-    "t_anneal_ns": 145.077
+    "t_anneal_ns": 80.758
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 1.75,
     "t_anneal_ns": 5.0
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 1.75,
-    "t_anneal_ns": 7.224
+    "t_anneal_ns": 6.686
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 1.75,
-    "t_anneal_ns": 10.437
+    "t_anneal_ns": 8.941
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 1.75,
-    "t_anneal_ns": 15.079
+    "t_anneal_ns": 11.956
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 1.75,
-    "t_anneal_ns": 21.785
+    "t_anneal_ns": 15.988
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 1.75,
-    "t_anneal_ns": 31.475
+    "t_anneal_ns": 21.38
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 1.75,
-    "t_anneal_ns": 47.212
+    "t_anneal_ns": 32.069
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 1.75,
-    "t_anneal_ns": 70.819
+    "t_anneal_ns": 48.104
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 2.5,
     "t_anneal_ns": 5.0
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 2.5,
-    "t_anneal_ns": 8.338
+    "t_anneal_ns": 5.738
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 2.5,
-    "t_anneal_ns": 13.904
+    "t_anneal_ns": 6.586
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 2.5,
-    "t_anneal_ns": 23.187
+    "t_anneal_ns": 7.559
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 2.5,
-    "t_anneal_ns": 38.666
+    "t_anneal_ns": 8.675
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 2.5,
-    "t_anneal_ns": 64.479
+    "t_anneal_ns": 9.957
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 2.5,
-    "t_anneal_ns": 96.718
+    "t_anneal_ns": 14.935
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 2.5,
-    "t_anneal_ns": 145.077
+    "t_anneal_ns": 22.402
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 3.25,
     "t_anneal_ns": 5.0
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 3.25,
     "t_anneal_ns": 7.5
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 3.25,
     "t_anneal_ns": 10.0
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 3.25,
     "t_anneal_ns": 15.0
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 4.0,
     "t_anneal_ns": 5.0
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 4.0,
     "t_anneal_ns": 7.5
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 4.0,
     "t_anneal_ns": 10.0
   },
   {
-    "topology": "ring",
+    "topology": "native_e10_c66_r0",
     "j_multiple": 4.0,
     "t_anneal_ns": 15.0
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 1.0,
     "t_anneal_ns": 5.0
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 1.0,
-    "t_anneal_ns": 8.338
+    "t_anneal_ns": 7.416
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 1.0,
-    "t_anneal_ns": 13.904
+    "t_anneal_ns": 11.0
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 1.0,
-    "t_anneal_ns": 23.187
+    "t_anneal_ns": 16.315
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 1.0,
-    "t_anneal_ns": 38.666
+    "t_anneal_ns": 24.199
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 1.0,
-    "t_anneal_ns": 64.479
+    "t_anneal_ns": 35.893
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 1.0,
-    "t_anneal_ns": 96.718
+    "t_anneal_ns": 53.839
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 1.0,
-    "t_anneal_ns": 145.077
+    "t_anneal_ns": 80.758
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 1.75,
     "t_anneal_ns": 5.0
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 1.75,
-    "t_anneal_ns": 7.224
+    "t_anneal_ns": 6.686
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 1.75,
-    "t_anneal_ns": 10.437
+    "t_anneal_ns": 8.941
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 1.75,
-    "t_anneal_ns": 15.079
+    "t_anneal_ns": 11.956
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 1.75,
-    "t_anneal_ns": 21.785
+    "t_anneal_ns": 15.988
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 1.75,
-    "t_anneal_ns": 31.475
+    "t_anneal_ns": 21.38
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 1.75,
-    "t_anneal_ns": 47.212
+    "t_anneal_ns": 32.069
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 1.75,
-    "t_anneal_ns": 70.819
+    "t_anneal_ns": 48.104
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 2.5,
     "t_anneal_ns": 5.0
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 2.5,
-    "t_anneal_ns": 7.224
+    "t_anneal_ns": 7.5
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 2.5,
-    "t_anneal_ns": 10.437
+    "t_anneal_ns": 10.0
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 2.5,
-    "t_anneal_ns": 15.079
+    "t_anneal_ns": 15.0
   },
   {
-    "topology": "chain",
-    "j_multiple": 2.5,
-    "t_anneal_ns": 21.785
-  },
-  {
-    "topology": "chain",
-    "j_multiple": 2.5,
-    "t_anneal_ns": 31.475
-  },
-  {
-    "topology": "chain",
-    "j_multiple": 2.5,
-    "t_anneal_ns": 47.212
-  },
-  {
-    "topology": "chain",
-    "j_multiple": 2.5,
-    "t_anneal_ns": 70.819
-  },
-  {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 3.25,
     "t_anneal_ns": 5.0
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 3.25,
     "t_anneal_ns": 7.5
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 3.25,
     "t_anneal_ns": 10.0
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 3.25,
     "t_anneal_ns": 15.0
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 4.0,
     "t_anneal_ns": 5.0
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 4.0,
-    "t_anneal_ns": 7.224
+    "t_anneal_ns": 7.5
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 4.0,
-    "t_anneal_ns": 10.437
+    "t_anneal_ns": 10.0
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r1",
     "j_multiple": 4.0,
-    "t_anneal_ns": 15.079
+    "t_anneal_ns": 15.0
   },
   {
-    "topology": "chain",
-    "j_multiple": 4.0,
-    "t_anneal_ns": 21.785
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
   },
   {
-    "topology": "chain",
-    "j_multiple": 4.0,
-    "t_anneal_ns": 31.475
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.416
   },
   {
-    "topology": "chain",
-    "j_multiple": 4.0,
-    "t_anneal_ns": 47.212
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 11.0
   },
   {
-    "topology": "chain",
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 16.315
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 24.199
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 35.893
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 53.839
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 80.758
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.717
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.911
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 18.385
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 28.376
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 43.798
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 65.697
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 98.545
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e10_c66_r2",
     "j_multiple": 4.0,
-    "t_anneal_ns": 70.819
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e10_c66_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 8.445
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 14.262
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 24.087
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 40.681
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 68.707
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 103.061
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 154.591
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.651
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 8.847
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.768
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 15.653
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 20.821
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 31.231
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 46.847
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.733
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.572
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.535
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.639
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 9.905
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 14.857
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 22.286
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e11_c59_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.316
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 10.705
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.665
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 22.921
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 33.539
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 50.308
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 75.463
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.767
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.651
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.671
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 8.847
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 10.203
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 15.305
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 22.957
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.733
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.572
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.535
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.639
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 9.905
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 14.857
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 22.286
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e11_c59_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.316
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 10.705
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.665
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 22.921
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 33.539
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 50.308
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 75.463
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.671
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.768
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 18.053
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 27.695
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 42.488
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 63.731
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 95.597
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e11_c59_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.449
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 11.096
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 16.53
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 24.626
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 36.685
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 55.028
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 82.542
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.625
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 8.778
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.63
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 15.409
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 20.416
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 30.624
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 45.937
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.147
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.558
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 9.292
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 11.424
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 14.046
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 21.069
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 31.603
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.82
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.775
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.887
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.181
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.687
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 16.03
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 24.045
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.753
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.619
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.616
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.763
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.083
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.125
+  },
+  {
+    "topology": "native_e5_c0_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 22.687
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.449
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 11.096
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 16.53
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 24.626
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 36.685
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 55.028
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 82.542
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.625
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 8.778
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.63
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 15.409
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 20.416
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 30.624
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 45.937
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.095
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.069
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 14.289
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 20.277
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 28.774
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 43.161
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 64.742
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.718
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.026
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 12.127
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 16.294
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 21.892
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 32.839
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 49.258
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.753
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.619
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.616
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.763
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.083
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.125
+  },
+  {
+    "topology": "native_e5_c0_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 22.687
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.449
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 11.096
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 16.53
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 24.626
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 36.685
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 55.028
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 82.542
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.625
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 8.778
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.63
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 15.409
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 20.416
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 30.624
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 45.937
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.095
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.069
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 14.289
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 20.277
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 28.774
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 43.161
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 64.742
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.82
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.775
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.887
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.181
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.687
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 16.03
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 24.045
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.619
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.763
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 11.602
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.36
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 20.334
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 30.502
+  },
+  {
+    "topology": "native_e5_c0_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 45.752
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.574
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 11.472
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 17.377
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 26.321
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 39.868
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 59.802
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 89.704
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.774
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 12.086
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 18.791
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 29.214
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 45.421
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 68.131
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 102.196
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.213
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.406
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.011
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 21.655
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 31.24
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 46.86
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 70.29
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.828
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.325
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 12.735
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 17.391
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 23.75
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 35.624
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 53.437
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.762
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.639
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.65
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.815
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.158
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.237
+  },
+  {
+    "topology": "native_e5_c1_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 22.855
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 8.742
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.283
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 26.72
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 46.715
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 81.673
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 122.51
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 183.765
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.774
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 12.086
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 18.791
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 29.214
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 45.421
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 68.131
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 102.196
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.213
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.406
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.011
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 21.655
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 31.24
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 46.86
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 70.29
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.828
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.325
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 12.735
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 17.391
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 23.75
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 35.624
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 53.437
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.762
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.639
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.65
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.815
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.158
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.237
+  },
+  {
+    "topology": "native_e5_c1_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 22.855
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.574
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 11.472
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 17.377
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 26.321
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 39.868
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 59.802
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 89.704
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.774
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 12.086
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 18.791
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 29.214
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 45.421
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 68.131
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 102.196
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.249
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.811
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 9.762
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 12.201
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.25
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 22.874
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 34.312
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.828
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.325
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 12.735
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 17.391
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 23.75
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 35.624
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 53.437
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.762
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.639
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.65
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.815
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.158
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.237
+  },
+  {
+    "topology": "native_e5_c1_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 22.855
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.355
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 10.819
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.915
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 23.411
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 34.438
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 51.657
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 77.485
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.561
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.433
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 17.289
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 26.143
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 39.532
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 59.299
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 88.948
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.086
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.407
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 9.015
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.973
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 13.355
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 20.033
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 30.049
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.771
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.66
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.687
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 8.872
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.239
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.359
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 23.038
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.748
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.609
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.598
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.736
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.044
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.065
+  },
+  {
+    "topology": "native_e6_c15_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 22.598
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.355
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 10.819
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.915
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 23.411
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 34.438
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 51.657
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 77.485
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.561
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.433
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 17.289
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 26.143
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 39.532
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 59.299
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 88.948
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.024
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 9.868
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 13.863
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 19.475
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 27.359
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 41.039
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 61.558
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.771
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.66
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.687
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 8.872
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.239
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.359
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 23.038
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.748
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.609
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.598
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.736
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.044
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.065
+  },
+  {
+    "topology": "native_e6_c15_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 22.598
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.355
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 10.819
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.915
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 23.411
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 34.438
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 51.657
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 77.485
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.551
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 8.582
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.243
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 14.73
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 19.298
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 28.946
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 43.419
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.024
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 9.868
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 13.863
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 19.475
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 27.359
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 41.039
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 61.558
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.66
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 8.872
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 11.818
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.741
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 20.968
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 31.452
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 47.179
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.748
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.609
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.598
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.736
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.044
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.065
+  },
+  {
+    "topology": "native_e6_c15_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 22.598
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.224,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 10.437,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.079,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 21.785,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 31.475,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 47.212,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 70.819,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.342,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 10.782,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.833,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 23.251,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 34.144,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 51.216,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 76.824,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.259,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.834,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.806,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 12.275,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 15.364,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 23.046,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 34.57,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.538,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 8.548,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.177,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 14.614,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 19.107,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 28.661,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 42.992,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.5,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.072,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.375,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.956,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.877,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 13.209,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 19.814,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 29.721,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.5,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.769,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.657,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.682,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 8.864,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.228,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.342,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 23.013,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.747,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.606,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.593,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.728,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.033,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.049,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 22.574,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.224,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 10.437,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.079,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 21.785,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 31.475,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 47.212,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 70.819,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.342,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 10.782,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.833,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 23.251,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 34.144,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 51.216,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 76.824,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.224,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 10.437,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 15.079,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 21.785,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 31.475,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 47.212,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 70.819,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.546,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.388,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 17.186,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 25.937,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 39.143,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 58.714,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 88.072,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.5,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.072,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.375,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.956,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.877,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 13.209,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 19.814,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 29.721,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.5,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.769,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.657,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.682,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 8.864,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.228,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.342,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 23.013,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.606,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.728,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 11.532,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.237,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 20.131,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 30.197,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 45.295,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 6.259,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.834,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 9.806,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 12.275,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.364,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 23.046,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 34.57,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.342,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 10.782,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.833,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 23.251,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 34.144,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 51.216,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 76.824,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.259,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.834,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.806,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 12.275,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 15.364,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 23.046,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 34.57,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.538,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 8.548,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.177,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 14.614,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 19.107,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 28.661,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 42.992,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.5,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.072,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.375,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.956,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.877,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 13.209,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 19.814,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 29.721,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.259,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.834,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.806,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 12.275,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.364,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 23.046,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 34.57,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.769,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.657,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.682,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 8.864,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.228,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.342,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 23.013,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.747,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.606,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.593,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.728,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.033,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.049,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e6_c26_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 22.574,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 6.929
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 9.601
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 13.305
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 18.437
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 25.549
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 38.323
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 57.485
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.172
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.62
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.406
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.612
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 14.335
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 21.502
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 32.253
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.655
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.858
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 11.789
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.691
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 20.885
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 31.328
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 46.991
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.741
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.591
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.568
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 8.69
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.977
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 14.966
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 22.448
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.719
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.542
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.483
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.559
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 9.791
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 14.686
+  },
+  {
+    "topology": "native_e7_c16_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 22.029
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 6.929
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 9.601
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 13.305
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 18.437
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 25.549
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 38.323
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 57.485
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 8.223
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 13.524
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 22.242
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 36.579
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 60.158
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 90.238
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 135.356
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.768
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.655
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.678
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.858
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.219
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.328
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 22.992
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.591
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 8.69
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 11.455
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.102
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 19.908
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 29.863
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 44.794
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.719
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.542
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.483
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.559
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 9.791
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 14.686
+  },
+  {
+    "topology": "native_e7_c16_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 22.029
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 6.929
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 9.601
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 13.305
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 18.437
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 25.549
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 38.323
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 57.485
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.124
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 10.151
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 14.464
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 20.61
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 29.366
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 44.049
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 66.073
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.655
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.858
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 11.789
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.691
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 20.885
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 31.328
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 46.991
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.741
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.591
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.568
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 8.69
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.977
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 14.966
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 22.448
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e7_c16_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.945
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 12.626
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 20.063
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 31.882
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 50.662
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 75.993
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 113.989
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.12
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.491
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.168
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.222
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 13.735
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 20.603
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 30.904
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.763
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.643
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.657
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.826
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.174
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.261
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 22.891
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.736
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.579
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.547
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 8.657
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.931
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 14.897
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 22.345
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.714
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.53
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.462
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.528
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 9.746
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 14.619
+  },
+  {
+    "topology": "native_e7_c25_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 21.928
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 6.884
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 9.477
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 13.047
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 17.963
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 24.73
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 37.096
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 55.643
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.064
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.979
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 14.098
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 19.917
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 28.137
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 42.206
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 63.309
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.763
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.643
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.657
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.826
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.174
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.261
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 22.891
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.736
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.579
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.547
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 8.657
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.931
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 14.897
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 22.345
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.714
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.53
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.462
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.528
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 9.746
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 14.619
+  },
+  {
+    "topology": "native_e7_c25_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 21.928
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 6.884
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 9.477
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 13.047
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 17.963
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 24.73
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 37.096
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 55.643
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.064
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.979
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 14.098
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 19.917
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 28.137
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 42.206
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 63.309
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.643
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.826
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 11.727
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.581
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 20.701
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 31.051
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 46.577
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.736
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.579
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.547
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 8.657
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.931
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 14.897
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 22.345
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.714
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.53
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.462
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.528
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 9.746
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 14.619
+  },
+  {
+    "topology": "native_e7_c25_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 21.928
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.608
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 11.577
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 17.615
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 26.804
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 40.786
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 61.178
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 91.767
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.836
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.346
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 12.777
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 17.469
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 23.883
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 35.825
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 53.737
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.61
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.739
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 11.554
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.275
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 20.194
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 30.291
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 45.436
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e8_c32_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.608
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 11.577
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 17.615
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 26.804
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 40.786
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 61.178
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 91.767
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.922
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.015
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 8.309
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.842
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.658
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 17.488
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 26.231
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.61
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.739
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 11.554
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.275
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 20.194
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 30.291
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 45.436
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e8_c32_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 6.592
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 8.69
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 11.456
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.102
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 19.909
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 29.864
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 44.796
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.836
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.346
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 12.777
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 17.469
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 23.883
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 35.825
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 53.737
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.61
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.739
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 11.554
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.275
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 20.194
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 30.291
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 45.436
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e8_c32_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.224,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 10.437,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.079,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 21.785,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 31.475,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 47.212,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 70.819,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.696,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 11.846,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 18.234,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 28.066,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 43.2,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 64.801,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 97.201,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.259,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.834,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.806,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 12.275,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 15.364,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 23.046,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 34.57,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.913,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.557,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 13.212,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 18.266,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 25.252,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 37.879,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 56.818,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.5,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.755,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.623,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.623,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.774,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.098,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.147,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 22.721,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.259,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.834,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.806,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 12.275,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.364,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 23.046,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 34.57,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.5,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.259,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.834,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 9.806,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 12.275,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.364,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 23.046,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 34.57,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.224,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 10.437,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.079,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 21.785,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 31.475,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 47.212,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 70.819,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.696,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 11.846,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 18.234,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 28.066,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 43.2,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 64.801,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 97.201,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.259,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.834,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.806,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 12.275,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 15.364,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 23.046,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 34.57,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.913,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.557,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 13.212,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 18.266,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 25.252,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 37.879,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 56.818,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.5,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.755,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.623,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.623,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.774,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.098,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.147,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 22.721,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.5,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.728,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.563,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.519,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 8.615,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.87,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 14.805,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 22.207,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.259,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.834,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 9.806,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 12.275,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.364,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 23.046,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 34.57,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.224,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 10.437,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.079,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 21.785,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 31.475,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 47.212,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 70.819,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 8.883,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 15.782,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 28.038,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 49.813,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 88.499,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 132.749,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 199.123,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.259,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.834,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.806,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 12.275,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 15.364,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 23.046,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 34.57,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.913,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.557,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 13.212,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 18.266,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 25.252,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 37.879,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 56.818,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.259,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.834,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 9.806,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 12.275,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.364,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 23.046,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 34.57,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.623,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.774,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 11.623,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.396,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 20.395,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 30.593,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 45.889,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.259,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.834,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.806,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 12.275,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.364,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 23.046,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 34.57,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.5,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.259,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.834,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 9.806,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 12.275,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.364,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 23.046,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 34.57,
+    "j_sign": 1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e8_c37_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.516
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 11.297
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 16.98
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 25.523
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 38.363
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 57.545
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 86.317
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.762
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.146
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 12.369
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 16.729
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 22.626
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 33.938
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 50.908
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.599
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.708
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 11.492
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.166
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 20.015
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 30.023
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 45.034
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e9_c54_r0",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.516
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 11.297
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 16.98
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 25.523
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 38.363
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 57.545
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 86.317
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.762
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.146
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 12.369
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 16.729
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 22.626
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 33.938
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 50.908
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.744
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.599
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 7.58
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.708
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 10.004
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.006
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 22.508
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e9_c54_r1",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 7.516
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 11.297
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 16.98
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 25.523
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 38.363
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 57.545
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 86.317
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 6.762
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 9.146
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 12.369
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 16.729
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 22.626
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 33.938
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 50.908
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.599
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 8.708
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 11.492
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 15.166
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 20.015
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 30.023
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 45.034
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.718
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.539
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.478
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 8.552
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.78
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 14.67
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 22.005
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.5
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 10.0
+  },
+  {
+    "topology": "native_e9_c54_r2",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 15.0
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 8.335,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 13.893,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 23.159,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 38.605,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 64.353,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 96.529,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 144.794,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 8.335,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 13.893,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 23.159,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 38.605,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 64.353,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 96.529,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.0,
+    "t_anneal_ns": 144.794,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.447,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.091,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 16.518,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 24.602,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 36.64,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 54.961,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 82.441,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 7.447,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 11.091,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 16.518,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 24.602,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 36.64,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 54.961,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 1.75,
+    "t_anneal_ns": 82.441,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 6.932,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 9.61,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 13.324,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 18.472,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 25.609,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 38.414,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 57.621,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 9.235,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 17.057,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 31.504,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 58.189,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 107.474,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 161.211,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 2.5,
+    "t_anneal_ns": 241.817,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.793,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 9.23,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 12.54,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 17.038,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 23.149,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 34.724,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 52.086,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 5.764,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 6.646,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 7.662,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 8.833,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 10.183,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 15.275,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 3.25,
+    "t_anneal_ns": 22.912,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.793,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 9.23,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 12.54,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 17.038,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 23.149,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 34.724,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 52.086,
+    "j_sign": 1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.0,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 5.743,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 6.596,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 7.575,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 8.7,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 9.993,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 14.989,
+    "j_sign": -1
+  },
+  {
+    "topology": "ring",
+    "j_multiple": 4.0,
+    "t_anneal_ns": 22.484,
+    "j_sign": -1
   }
 ]

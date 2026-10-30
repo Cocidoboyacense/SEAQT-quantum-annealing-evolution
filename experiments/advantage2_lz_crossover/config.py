@@ -3,11 +3,9 @@ Landau-Zener crossover experiment -- coherence vs J and t_anneal on a
 6-qubit ring/chain, following King et al. 2022 (arXiv:2202.05847v2).
 
 SOLVER_NAME and SCHEDULE_PATH are both filled in and were used end-to-end
-for the exploratory and refinement hardware runs (see README.md's
-"Findings" and "Status" sections) -- Advantage2_system1 is currently in
-maintenance (not visible via the API as of this writing), so re-running
-anything here needs that access restored first; the code itself needs no
-changes when it comes back.
+for the hardware runs (see README.md's "Findings" and "Status" sections).
+Re-running anything on the QPU needs access to Advantage2_system1; analysing
+the results already in results/ does not.
 
 Target-energy -> dimensionless-J conversion (corrected)
 ---------------------------------------------------------------------------
@@ -38,26 +36,24 @@ target. Then J = E_target / J_cal(s_c). See `solve_s_c_and_J` below.
 from __future__ import annotations
 
 import itertools
+import json
 import os
 import sys
+from pathlib import Path
 
 # ---------------------------------------------------------------------------
 # Advantage2 solver at JUPSI. Only Advantage2_system1 is visible on this
 # token (no Advantage2_system2 -- confirmed by listing all solvers); no
 # region filter needed for this one. Credentials (token) live in the local
-# dwave-cloud-client config file, NOT here -- see
-# C:\Users\andre\AppData\Local\dwavesystem\dwave\dwave.conf (outside the
-# repo, never committed).
+# dwave-cloud-client config file (dwave.conf), outside the repo -- never
+# commit a token.
 # ---------------------------------------------------------------------------
 SOLVER_NAME = "Advantage2_system1"
 
 # ---------------------------------------------------------------------------
 # Real Advantage2_system1 schedule export (A(s)/B(s) vs s)
 # ---------------------------------------------------------------------------
-SCHEDULE_PATH = (
-    r"C:\Users\andre\OneDrive\Documentos\Maestría\Julich\codigos"
-    r"\09-1312A-N_Advantage2_system1_annealing_schedule.xlsx"
-)
+SCHEDULE_PATH = str(Path(__file__).resolve().parents[2] / "schedules" / "09-1312A-N_Advantage2_system1_annealing_schedule.xlsx")
 
 # ---------------------------------------------------------------------------
 # Physical operating temperature (measured, not the datasheet-generic value
@@ -96,7 +92,6 @@ K_BT_OVER_H_MHZ = k_bt_over_h_mhz(T_OPERATING_MK / 1000.0)  # ~416.7 MHz
 # ---------------------------------------------------------------------------
 N_QUBITS = 6
 J_MULTIPLES = [1.0, 1.75, 2.5, 3.25, 4.0]  # x k_B T / h (ceiling is ~4.106x)
-TOPOLOGIES = ["ring", "chain"]
 
 NUM_READS_EXPLORATORY = 1000
 NUM_READS_REFINEMENT = 8000  # 5000-10000 recommended; pick a point in that range
@@ -119,16 +114,88 @@ def chain_J(n: int = N_QUBITS, j_val: float = 1.0) -> dict[tuple[int, int], floa
 
 TOPOLOGY_BUILDERS = {"ring": ring_J, "chain": chain_J}
 
+# ---------------------------------------------------------------------------
+# Native topologies -- discovered by discover_native_topologies.py (random
+# connected physical-qubit windows on the real chip, grouped by isomorphism
+# class), then hand-picked by reviewing results/native_topology_catalog.csv
+# and copying chosen rows into results/native_topologies_selected.json.
+# Unlike TOPOLOGY_BUILDERS (abstract shapes, embedded wherever minorminer
+# puts them), each entry here already carries its OWN fixed physical
+# qubits -- that's how it was discovered -- so no embedding search is
+# needed for these at submission time.
+#
+# Optional: this file may not exist yet (before any discovery/selection has
+# been done), in which case NATIVE_TOPOLOGIES is just empty and the sweep
+# behaves exactly as before (ring/chain only).
+# ---------------------------------------------------------------------------
+NATIVE_TOPOLOGIES_PATH = Path(__file__).parent / "results" / "native_topologies_selected.json"
+
+
+def load_native_topologies(path: Path = NATIVE_TOPOLOGIES_PATH) -> dict[str, dict]:
+    """Loads the user-curated subset of discovered native topologies:
+    {name: {"edges": [(i,j), ...], "physical_qubits": [...]}}. Returns {}
+    if `path` doesn't exist -- selection is a manual, reviewed step, never
+    auto-populated from the full raw catalog."""
+    if not path.exists():
+        return {}
+    with open(path) as f:
+        raw = json.load(f)
+    return {
+        entry["name"]: {
+            "edges": [tuple(e) for e in entry["edges_logical"]],
+            "physical_qubits": list(entry["physical_qubits"]),
+        }
+        for entry in raw
+    }
+
+
+NATIVE_TOPOLOGIES = load_native_topologies()
+
+TOPOLOGIES = ["ring", "chain"] + list(NATIVE_TOPOLOGIES)
+
+# Topologies where BOTH signs of J are swept explicitly (rather than
+# solve_s_c_and_J's usual auto-pick of whichever sign has more headroom):
+#
+# - ring, chain: to demonstrate directly, not just argue from King et al.'s
+#   even-length gauge-equivalence, that AF and FM give the same physics
+#   here (both are even cycles/paths, so the gauge argument applies).
+#
+# - native_e6_c26_* and native_e8_c37_* (all 3 regions each): the only two
+#   of the 11 selected native shapes that are NON-bipartite AND actually
+#   show classical ground-state degeneracy under antiferromagnetic
+#   coupling (frustration) -- verified directly (not assumed) via
+#   classical_ground_states: class 26 goes from 2 (FM) to 6 (AF) ground
+#   states, class 37 from 2 to 4. The other 3 non-bipartite shapes in the
+#   selection (classes 54/66/59) stay at 2 even under AF -- non-bipartite
+#   alone doesn't guarantee frustration, it depends on the specific
+#   odd-cycle structure, so "bipartite vs non-bipartite" is NOT by itself
+#   a meaningful symmetric-vs-frustrated split unless the frustrated ones
+#   are actually run under AF (their auto-picked sign is FM, same as
+#   everything else, which is never frustrated regardless of topology --
+#   see results/symmetry_classification.csv for the full per-class table).
+J_SIGN_TOPOLOGIES = {
+    "ring", "chain",
+    "native_e6_c26_r0", "native_e6_c26_r1", "native_e6_c26_r2",
+    "native_e8_c37_r0", "native_e8_c37_r1", "native_e8_c37_r2",
+}
+
 
 def build_h_J(topology: str, j_dimensionless: float, n: int = N_QUBITS):
     """h (all zero -- required for fast_anneal=True) and J (topology's
-    edges, each set to `j_dimensionless`) for one problem instance."""
-    if topology not in TOPOLOGY_BUILDERS:
-        raise ValueError(f"unknown topology {topology!r}, expected one of {list(TOPOLOGY_BUILDERS)}")
-    template = TOPOLOGY_BUILDERS[topology](n=n, j_val=1.0)
+    edges, each set to `j_dimensionless`) for one problem instance. Works
+    uniformly for both abstract topologies (TOPOLOGY_BUILDERS) and
+    discovered native ones (NATIVE_TOPOLOGIES) -- callers don't need to
+    know which kind a given topology name is."""
     h = {i: 0.0 for i in range(n)}
-    J = {edge: j_dimensionless for edge in template}
-    return h, J
+    if topology in TOPOLOGY_BUILDERS:
+        template_edges = TOPOLOGY_BUILDERS[topology](n=n, j_val=1.0)
+        J = {edge: j_dimensionless for edge in template_edges}
+        return h, J
+    if topology in NATIVE_TOPOLOGIES:
+        J = {edge: j_dimensionless for edge in NATIVE_TOPOLOGIES[topology]["edges"]}
+        return h, J
+    raise ValueError(f"unknown topology {topology!r}, expected one of "
+                      f"{list(TOPOLOGY_BUILDERS) + list(NATIVE_TOPOLOGIES)}")
 
 
 # ---------------------------------------------------------------------------
@@ -268,3 +335,20 @@ def experiment_grid(topologies=TOPOLOGIES, j_multiples=J_MULTIPLES):
     separately inside submit_hardware.py once the solver's own
     fast_anneal_time_range is known."""
     return list(itertools.product(topologies, j_multiples))
+
+
+def experiment_grid_with_sign(topologies=TOPOLOGIES, j_multiples=J_MULTIPLES):
+    """Like experiment_grid, but yields (topology, j_multiple, j_sign)
+    triples: j_sign is None (solve_s_c_and_J's usual auto-pick) for every
+    topology except those in J_SIGN_TOPOLOGIES, which instead get two
+    explicit rows, +1 and -1, covering the auto-picked sign either way
+    (auto always resolves to one of the two) plus its opposite."""
+    grid = []
+    for topology in topologies:
+        for j_multiple in j_multiples:
+            if topology in J_SIGN_TOPOLOGIES:
+                grid.append((topology, j_multiple, 1))
+                grid.append((topology, j_multiple, -1))
+            else:
+                grid.append((topology, j_multiple, None))
+    return grid

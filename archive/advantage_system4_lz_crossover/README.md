@@ -1,5 +1,11 @@
 # Advantage_system4 Landau-Zener crossover experiment (parallel run)
 
+> **Archived: not part of the final results.** Same protocol as the Advantage2 experiment, on an older chip, run while
+> Advantage2_system1 was in maintenance. The hardware measurements (`results/exploratory.csv`, `results/refinement.csv`:
+> `p_ground` per anneal) are valid. The `a_empirical/a_theory` ratios and the conclusions drawn from them below **predate
+> the units fix** of 2026-09-19 (see `experiments/advantage2_lz_crossover/README.md`, "Units fix"): do not cite them
+> without recomputing. No Stage 2 (dissipator) work was done on this chip.
+
 Same experiment as `../advantage2_lz_crossover` (coherence vs. J and
 t_anneal on a 6-qubit ring/chain, King et al. 2022), run on
 **`Advantage_system4`** (Pegasus, gen-1 Advantage) instead of

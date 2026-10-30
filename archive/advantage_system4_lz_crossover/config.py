@@ -16,6 +16,7 @@ from __future__ import annotations
 import itertools
 import os
 import sys
+from pathlib import Path
 
 # ---------------------------------------------------------------------------
 # Advantage (gen 1) system4. Confirmed available on this token (unlike
@@ -24,9 +25,8 @@ import sys
 # us (3.41 ns floor -- well below the ~30 ns coherent window this
 # experiment needs, verified before writing any of this; NOT the ~500 ns
 # floor some other Advantage-gen solvers reportedly have). Credentials
-# (token) live in the local dwave-cloud-client config file, NOT here -- see
-# C:\Users\andre\AppData\Local\dwavesystem\dwave\dwave.conf (outside the
-# repo, never committed).
+# (token) live in the local dwave-cloud-client config file (dwave.conf),
+# outside the repo -- never commit a token.
 # ---------------------------------------------------------------------------
 SOLVER_NAME = "Advantage_system4"
 
@@ -36,10 +36,7 @@ SOLVER_NAME = "Advantage_system4"
 # similar filename) and NOT the generic Advantage_system5_3 export used
 # elsewhere in this repo (a different physical unit, same generation).
 # ---------------------------------------------------------------------------
-SCHEDULE_PATH = (
-    r"C:\Users\andre\OneDrive\Documentos\Maestría\Julich\codigos"
-    r"\09-1263A-C_Advantage_system4_annealing_schedule.xlsx"
-)
+SCHEDULE_PATH = str(Path(__file__).resolve().parents[2] / "schedules" / "09-1263A-C_Advantage_system4_annealing_schedule.xlsx")
 
 # ---------------------------------------------------------------------------
 # Physical qubit temperature: 15.4 +/- 0.1 mK (per Advantage_system4's own

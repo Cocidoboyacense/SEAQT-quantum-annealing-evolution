@@ -17,16 +17,20 @@ For a single qubit (no couplings) this reduces to:
 
 Units / timescale convention
 -----------------------------
-The datasheet states A(s), B(s) are "energy divided by hbar", i.e. angular
-frequencies. This code follows the common convention of treating the GHz
-values directly as the H used in  drho/dt = -i/hbar [H, rho]  with hbar=1
-and t measured in nanoseconds (GHz * ns is dimensionless, matching how
-D-Wave itself quotes anneal times in microseconds/nanoseconds against A(s),
-B(s) in GHz). If your source defines A(s)/B(s) as *linear* frequency f
-(so that E = h f = 2*pi*hbar*f) rather than angular frequency, multiply
-A(s), B(s) by 2*pi before use -- everything below takes A(s), B(s) as
-already being in the "angular frequency the Schrodinger equation uses"
-convention, and that single assumption is the only place it matters.
+The datasheet's A(s), B(s) columns are "A(s)/h" and "B(s)/h" in GHz (the
+schedule xlsx's "About" sheet: "Tunneling energy in units of GHz"), i.e.
+energy divided by Planck's h -- a *linear* frequency f, with E = h f =
+2*pi*hbar*f. Integrating  drho/dt = -i/hbar [H, rho]  with hbar=1 and t in
+nanoseconds needs H as an *angular* frequency (rad/ns), so the Hamiltonian
+builders below multiply A(s), B(s) by 2*pi (`freq_to_angular`, default
+TWO_PI). `beta_from_kelvin` = hbar/(k_B T) [ns] is the matching angular
+convention (beta * H_ang is dimensionless). Pass `freq_to_angular=1.0` only
+to reproduce results computed under this repo's earlier convention of using
+the GHz values directly, which put H a factor 2*pi too small against the
+bath temperature and the closed-system Landau-Zener rate.
+
+`AnnealSchedule.A/.B` still return the raw linear-GHz values (E/h), since
+callers that work in k_B T/h units (experiments/*/config.py) want those.
 """
 from __future__ import annotations
 
@@ -40,6 +44,8 @@ from .operators import ising_hamiltonian
 
 sigma_x = np.array([[0, 1], [1, 0]], dtype=complex)
 sigma_z = np.array([[1, 0], [0, -1]], dtype=complex)
+
+TWO_PI = 2.0 * np.pi
 
 
 @dataclass
@@ -79,17 +85,19 @@ def load_schedule(
 
 
 def hamiltonian_1qubit(
-    schedule: AnnealSchedule, h1: float, t_anneal: float
+    schedule: AnnealSchedule, h1: float, t_anneal: float, freq_to_angular: float = TWO_PI
 ) -> Callable[[float], np.ndarray]:
-    """Build H(t) for a single qubit with linear-bias h1, over a total
-    anneal time `t_anneal` (same time units as you integrate in, e.g. ns),
-    linearly mapping t in [0, t_anneal] to s in [0, 1]. Equivalent to
+    """Build H_ang(t) [rad/ns] for a single qubit with linear-bias h1, over a
+    total anneal time `t_anneal` (ns), linearly mapping t in [0, t_anneal]
+    to s in [0, 1]. Equivalent to
     `hamiltonian_nqubit(schedule, h=[h1], J=None, t_anneal=t_anneal)`, kept
-    as a lighter-weight 2x2-only path (no Kronecker products)."""
+    as a lighter-weight 2x2-only path (no Kronecker products).
+    `freq_to_angular` converts the schedule's E/h (GHz) into rad/ns; see the
+    module docstring."""
 
     def H(t: float) -> np.ndarray:
         s = float(np.clip(t / t_anneal, 0.0, 1.0))
-        return -schedule.A(s) / 2.0 * sigma_x + schedule.B(s) / 2.0 * h1 * sigma_z
+        return freq_to_angular * (-schedule.A(s) / 2.0 * sigma_x + schedule.B(s) / 2.0 * h1 * sigma_z)
 
     return H
 
@@ -99,17 +107,23 @@ def hamiltonian_nqubit(
     h: Sequence[float],
     J: Mapping[tuple[int, int], float] | np.ndarray | None,
     t_anneal: float,
+    freq_to_angular: float = TWO_PI,
 ) -> Callable[[float], np.ndarray]:
-    """Build H(t) for n qubits (n = len(h)) with linear biases `h` and
-    couplings `J` (dict {(i,j): J_ij} or dense n x n array; see
+    """Build H_ang(t) [rad/ns] for n qubits (n = len(h)) with linear biases
+    `h` and couplings `J` (dict {(i,j): J_ij} or dense n x n array; see
     `seaqt.operators.ising_hamiltonian` for the sign convention), using the
     real QPU A(s)/B(s) schedule, linearly mapping t in [0, t_anneal] to
-    s in [0, 1]."""
+    s in [0, 1]. `freq_to_angular` converts the schedule's E/h (GHz) into
+    rad/ns; see the module docstring."""
     n = len(h)
+    # ising_hamiltonian is linear in (A, B): build the two operator pieces once
+    # instead of re-running the Kronecker products on every ODE right-hand side.
+    h_driver = ising_hamiltonian(n, h=h, J=J, A=1.0, B=0.0)
+    h_problem = ising_hamiltonian(n, h=h, J=J, A=0.0, B=1.0)
 
     def H(t: float) -> np.ndarray:
         s = float(np.clip(t / t_anneal, 0.0, 1.0))
-        return ising_hamiltonian(n, h=h, J=J, A=schedule.A(s), B=schedule.B(s))
+        return freq_to_angular * (schedule.A(s) * h_driver + schedule.B(s) * h_problem)
 
     return H
 
@@ -122,6 +136,7 @@ def hamiltonian_nqubit_noisy_h(
     h_noise_std: float,
     J_noise_std: float = 0.0,
     rng: np.random.Generator | None = None,
+    freq_to_angular: float = TWO_PI,
 ) -> Callable[[float], np.ndarray]:
     """Like `hamiltonian_nqubit`, but with a Gaussian offset added to `h`
     (per qubit) and, optionally, to `J` (per coupling), modeling the random
@@ -182,19 +197,20 @@ def hamiltonian_nqubit_noisy_h(
                         J_arr[i, j] += rng.normal(0.0, J_noise_std)
             J_noisy = J_arr
 
-    return hamiltonian_nqubit(schedule, h=h_noisy, J=J_noisy, t_anneal=t_anneal)
+    return hamiltonian_nqubit(
+        schedule, h=h_noisy, J=J_noisy, t_anneal=t_anneal, freq_to_angular=freq_to_angular
+    )
 
 
 def beta_from_kelvin(temperature_k: float) -> float:
     """Convert a physical bath temperature (Kelvin) to the inverse
-    temperature `beta` matching the (GHz, ns) convention used above, i.e.
-    such that `beta * H_GHz` is dimensionless when H is in GHz (so beta
-    comes out in nanoseconds).
+    temperature `beta` [ns] such that `beta * H_ang` is dimensionless for the
+    angular-frequency H (rad/ns) the Hamiltonian builders above return.
 
-    beta = hbar / (k_B * T),  with H(s) treated as angular frequency (see
-    module docstring) so hbar is folded in as (hbar_SI * 1e9) [J*ns] before
-    dividing by k_B*T. D-Wave's QPUs run at T ~ 13-20 mK; e.g.
-    beta_from_kelvin(0.015) ~ 0.81 ns.
+    beta = hbar / (k_B * T), with hbar folded in as (hbar_SI * 1e9) [J*ns]
+    before dividing by k_B*T (equivalently 1 / (2*pi*k_B*T/h)). D-Wave's QPUs
+    run at T ~ 13-20 mK; e.g. beta_from_kelvin(0.015) ~ 0.51 ns and
+    beta_from_kelvin(0.020) ~ 0.38 ns.
     """
     hbar_si = 1.054571817e-34  # J*s
     kb_si = 1.380649e-23  # J/K

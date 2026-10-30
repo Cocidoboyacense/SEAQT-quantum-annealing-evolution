@@ -1,0 +1,23 @@
+{
+ "created": "2026-10-12T12:03:43",
+ "statement": "Prediction for ring J=2.5x written before any chip-campaign take of that problem. Model: global bath, step at s_c, 20 mK. B from the B-gap relation of ring 1x, chain 1x, ring 1.75x only. The hardware is expected to equal 1-(1-P_model)(1-eps), eps = readout (unknown, bounded by the take itself).",
+ "delta_min_GHz_ring25": 2.153920726041947,
+ "s_c": 0.3964334172995949,
+ "j_abs": 0.8458877660540548,
+ "B_predictions": {
+  "B_gap": 2.604456739746973,
+  "B_slope": 3.0488947115948237,
+  "B_norm": 2.3142250789613237
+ },
+ "tau_const_alternative_ns": 6.24,
+ "t_a_grid_ns": [
+  5.0,
+  9.235,
+  17.057,
+  31.504,
+  58.189,
+  107.474,
+  161.211,
+  241.817
+ ]
+}

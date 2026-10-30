@@ -31,20 +31,36 @@ other qubit's state.
 
 Why NOT the alternative of adding a separate reservoir term on top of an
 UNAPPROXIMATED (exact, joint-entropy-operator) D_J -- as an independently
-available reference implementation (alejomonbar/Neepy's `SEAQT_2Res`) and
-a colleague's Mathematica notebook both do for the 2-qubit case: that
-construction was benchmarked directly against this one on an uncoupled
-2-qubit test case with a known-exact target (the local Gibbs state at
-beta_R). This module's dissipator reproduced the target to ~1e-5 after 12
-relaxation times; the Neepy-style separate-reservoir-term construction
-plateaued at a *stable but wrong* fixed point (~13-19% off) that did not
-improve with more time, and became numerically unstable (ODE step size
-underflow) trying to push further -- consistent with its bath term,
-beta_R*(H_J - <H_J>), lacking the entropy piece that (in the F-operator
-construction used here and in `bath_dissipator`) is what makes the Gibbs
-state the exact fixed point. So this module keeps the *same* D_J
-construction as the 2-qubit case, just generalized to M subsystems, rather
-than switching to that alternative.
+available reference implementation (alejomonbar/Neepy's `SEAQT_2Res`)
+does for the 2-qubit case: that construction was benchmarked directly
+against this one on an uncoupled 2-qubit test case with a known-exact
+target (the local Gibbs state at beta_R). This module's dissipator
+reproduced the target to ~1e-5 after 12 relaxation times; the Neepy-style
+separate-reservoir-term construction plateaued at a *stable but wrong*
+fixed point (~13-19% off) that did not improve with more time, and became
+numerically unstable (ODE step size underflow) trying to push further --
+consistent with its bath term, beta_R*(H_J - <H_J>), lacking the entropy
+piece that (in the F-operator construction used here and in
+`bath_dissipator`) is what makes the Gibbs state the exact fixed point.
+So this module keeps the *same* D_J construction as the 2-qubit case,
+just generalized to M subsystems, rather than switching to that
+alternative.
+
+(An earlier version of this note also attributed the same
+separate-reservoir-term construction to "a colleague's Mathematica
+notebook" -- that attribution was made without ever opening the notebook
+and turned out to be wrong. Reading the actual file (2-qubit_dynamics.nb)
+and translating its `dissp`/`disspSingle` routines directly
+(validation/mathematica_2qubit_dissipator.py)
+shows no beta_R or reservoir term anywhere in it: both A and B relax
+toward a SELF-CONSISTENT per-qubit (alpha, beta) fixed by their own
+(Gamma, sigma_es), exactly the isolated/no-reservoir model below. Once an
+apparent transcription bug in the notebook's `esB` formula is corrected
+(it uses qubit A's locally-perceived H, HuA, in its first term, where by
+direct analogy with `esA` it should be HuB), the translated dissipator
+matches `local_seaqt_dephasing_n` at N=2 with equal taus to machine
+precision (~1e-17) -- i.e. this notebook is not a different, untried
+construction; it is this module's own `local_seaqt_dephasing_n`.)
 
 Tr(D_J) = 0 exactly (same algebraic identity as the M=2 case, independent
 of M, beta_R, or tau_J), so the full dissipative contribution to drho/dt

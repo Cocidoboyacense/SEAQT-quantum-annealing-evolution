@@ -1,0 +1,14 @@
+class_id,num_edges,is_bipartite,degree_sequence,n_classical_ground_states
+1,5,True,3 2 2 1 1 1,2
+0,5,True,3 2 2 1 1 1,2
+chain,5,True,(ring/chain),2
+15,6,True,3 2 2 2 2 1,2
+ring,6,True,(ring/chain),2
+16,7,True,3 3 3 2 2 1,2
+25,7,True,4 3 2 2 2 1,2
+32,8,True,4 4 2 2 2 2,2
+26,6,False,3 3 2 2 1 1,2
+37,8,False,4 3 3 2 2 2,2
+54,9,False,4 4 3 3 2 2,2
+66,10,False,4 4 3 3 3 3,2
+59,11,False,4 4 4 4 3 3,2

@@ -1,0 +1,13 @@
+kind,a,b,j_sign,spearman
+odd vs even takes,ring 1x,ring 1x,-,0.9563060965598815
+odd vs even takes,ring 1x,ring 1x,+,0.9601401326269887
+odd vs even takes,chain 1x,chain 1x,-,0.9765558669499848
+odd vs even takes,chain 1x,chain 1x,+,0.9788730145610408
+odd vs even takes,ring 1.75x,ring 1.75x,-,0.9320112389488203
+odd vs even takes,ring 1.75x,ring 1.75x,+,0.9287100929271938
+between problems,ring 1x,chain 1x,-,0.799768721613209
+between problems,ring 1x,ring 1.75x,-,0.8474241337584817
+between problems,chain 1x,ring 1.75x,-,0.6877875257525018
+between problems,ring 1x,chain 1x,+,0.8002726056013006
+between problems,ring 1x,ring 1.75x,+,0.8784571755082092
+between problems,chain 1x,ring 1.75x,+,0.689689655721201

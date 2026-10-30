@@ -11,7 +11,9 @@ import matplotlib.pyplot as plt
 import config
 
 schedule = config.load_system4_schedule()
-Gamma = lambda s: schedule.A(s) / 2.0
+# King et al. Eq. 4 uses Gamma/hbar; schedule.A is E/h in GHz, so Gamma/hbar in
+# rad/ns is 2*pi times it (Jcal only enters via J'/J).
+Gamma = lambda s: 2 * np.pi * schedule.A(s) / 2.0
 Jcal = lambda s: schedule.B(s) / 2.0
 eps = 1e-5
 
