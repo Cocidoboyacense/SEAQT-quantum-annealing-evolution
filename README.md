@@ -1,16 +1,72 @@
-# Quantum Annealing Evolution — Bath Relaxation, D-Wave Schedule
+# SEAQT against D-Wave Advantage2: how far does the model predict the hardware?
 
-A from-scratch simulator for quantum annealing as an **open system**: a
-qubit register coupled to a fixed-temperature bath, driven by the real
-D-Wave QPU annealing Hamiltonian, extended from 1 to 2 coupled qubits.
-Two dissipators are implemented:
+We simulate small quantum-annealing problems (6 qubits) exactly with Steepest Entropy Ascent Quantum Thermodynamics (SEAQT)
+and compare them with measurements on **D-Wave Advantage2_system1** (JUPSI, Forschungszentrum Jülich), to see where the
+model predicts the hardware and where it fails.
 
-1. **`bath_dissipator`** (used by `one_qubit_dwave_bath.py`) — the whole
-   composite system relaxes toward a single global Gibbs state.
-2. **`local_seaqt_dissipator`** (used by `two_qubit_dwave_bath.py`) — each
-   qubit relaxes *locally*, coupled to the other only through their
-   current reduced states (from Yamada, Kusaba, Li, von Spakovsky et al.,
-   arXiv:2404.05473v3).
+## Where to start
+
+| You want to | Go to |
+|---|---|
+| **Use the experimental data** | [`experiments/advantage2_lz_crossover/DATA.md`](experiments/advantage2_lz_crossover/DATA.md): every file, its columns and conventions, and what not to use |
+| See the results with figures | [`notebooks/seaqt_annealing_walkthrough.ipynb`](notebooks/seaqt_annealing_walkthrough.ipynb), sections 15-16 |
+| See how the experiments were designed and run | [`experiments/advantage2_lz_crossover/README.md`](experiments/advantage2_lz_crossover/README.md) |
+| Run the simulator | [Usage](#usage) below |
+
+## Main results
+
+$1-P_{GS}$ is the failure probability: the fraction of anneals that do not end in a ground state. "Floor" is the window around
+the peak of $P_{GS}$, at 40-145 ns.
+
+| Result | Value |
+|---|---|
+| The simulator reproduces King et al.'s Landau-Zener rate, no fit parameters | ratio 0.993 |
+| On the chip: coherent rise, anti-Kibble-Zurek fall (minimum at 2-6 us), recovery; dense shapes saturate | all 215 combinations |
+| Von Neumann follows the shape of the coherent regime, but the hardware fails more often | median x1.5 (10-90%: 1.36-2.20), on every placement and all combinations but one (a single anneal at the edge of saturation) |
+| That excess does not shrink with $J$ | median x1.5 at $J=1\times$, x1.9 at 3.25-4x |
+| Von Neumann misses the floor entirely | off by a factor of 100 or more |
+| SEAQT with a dissipator brings the floor to within a few times the hardware, with one parameter per problem | non-composite x2.4-3.4, composite x1.24-1.43 |
+| Switching the bath off at the crossing $s_c$ predicts a new coupling with no new parameter | ring 1.75x: x2.4-2.9 (von Neumann: x108-229) |
+| How the floor grows from 64.5 to 145 ns ($t_a$ x2.25) | hardware x1.8-2.0; non-composite x4.6-13; composite x2.3 |
+| $\tau$ is pinned within a problem but is not a property of the chip | non-composite: changes x1.9 with $t_a$, x1.6 between problems; composite: x1.13-1.27 with $t_a$, more than x10 between problems |
+| The data are reliable | no crosstalk ($\le 0.0006$ in $P_{GS}$); readout $\le 1.9\times10^{-4}$; shot noise only at short $t_a$; chip-wide floor drift of 10-17% between takes |
+| The chip is consistent | placements differ by 7-12% in the coherent excess, stably and tied to their qubits |
+
+Still open: the coherent excess; why the floor grows more slowly than $t_a$; which excited states the chip populates (needs
+bitstrings); a bound on $\tau$ independent of the fit.
+
+## Names
+
+The code, the file names and the notebook use the older names on the left.
+
+| In the code and files | Meaning |
+|---|---|
+| `closed`, `unitary`, ideal case | von Neumann evolution: SEAQT with no dissipator |
+| `global`, `bath`, `bath_dissipator`, `freezeout`, `step` | non-composite SEAQT: one dissipator on the whole state, relaxing toward the Gibbs state at bath temperature |
+| `local`, `local_seaqt_dissipator` | composite SEAQT: one dissipator per qubit, built from its locally perceived Hamiltonian (Yamada, Kusaba, Li, von Spakovsky et al., arXiv:2404.05473v3) |
+| error, `om` | failure probability, $1-P_{GS}$ |
+
+## Layout
+
+```
+experiments/advantage2_lz_crossover/   the hardware experiments, their analyses and results/
+    DATA.md                            guide to the data
+    README.md                          how the experiments were designed and run, in order
+notebooks/                             the full lab notebook, with every result and figure
+seaqt/                                 the simulator
+    core.py                            density-matrix utilities, bath_dissipator, evolve()
+    local_seaqt.py, local_seaqt_n.py   the composite dissipator, for 2 and N qubits
+    operators.py                       N-qubit Pauli operators and the Ising Hamiltonian
+    dwave.py                           D-Wave Hamiltonian, schedule loader, units
+schedules/                             the chips' A(s), B(s) exports
+tests/                                 physics checks of the simulator
+examples/                              1- and 2-qubit demos
+validation/                            the 2-qubit Mathematica dissipator translated and compared with the code (see the script header)
+archive/                               experiments not used in the results (Advantage_system4)
+```
+
+Install with `pip install -r requirements.txt`. Reading the data and running the simulator need no QPU access; the scripts'
+QPU modes need a D-Wave token in your own `dwave.conf`.
 
 ## Physics
 
@@ -75,36 +131,6 @@ adapted from — see [`tests/test_local_seaqt.py`](tests/test_local_seaqt.py).
 **This dissipator does NOT come with a positivity-preservation guarantee**
 — see "Conventions / gotchas" below.
 
-## Layout
-
-```
-seaqt/
-  core.py        density-matrix utilities, `bath_dissipator`, and a generic
-                 solve_ivp-based integrator (`evolve()`) that works for any
-                 finite Hilbert-space dimension
-  local_seaqt.py the two-reservoir local SEAQT dissipator (2-qubit only)
-  operators.py   N-qubit Pauli operators (Kronecker products) + the Ising
-                 Hamiltonian builder (driver + linear biases + couplings)
-  dwave.py       D-Wave QPU Hamiltonian (1- and N-qubit) + Excel schedule
-                 (A(s), B(s)) loader
-examples/
-  one_qubit_dwave_bath.py    1 qubit, real D-Wave schedule + bath
-                              relaxation — a simpler stepping stone
-  two_qubit_dwave_bath.py    2 coupled qubits, real D-Wave schedule +
-                              local SEAQT relaxation — the main result
-tests/
-  test_bath_dissipator.py    bath dissipator physics checks (1 qubit)
-  test_local_seaqt.py        local SEAQT dissipator physics checks
-  test_operators.py          N-qubit Pauli/Ising-Hamiltonian construction
-  test_two_qubit.py          bath dissipator physics checks on a genuine
-                              2-qubit (4x4) Hamiltonian
-notebooks/
-  seaqt_annealing_walkthrough.ipynb   guided tour: live physics
-                              validation, 1- and 2-qubit demos, the
-                              t_anneal x τ sweep, N-qubit extension, and a
-                              numerical note on degenerate eigenvalues
-```
-
 ## Usage
 
 ```bash
@@ -122,7 +148,7 @@ import numpy as np
 from seaqt import bath_dissipator, evolve, entropy, gibbs_state
 from seaqt.dwave import load_schedule, hamiltonian_nqubit, beta_from_kelvin
 
-schedule = load_schedule("path/to/..._annealing_schedule.xlsx")
+schedule = load_schedule("schedules/09-1265A-C_Advantage_system5_3_annealing_schedule.xlsx")
 H = hamiltonian_nqubit(schedule, h=[0.6, -0.4], J={(0, 1): 0.5}, t_anneal=20.0)
 beta = beta_from_kelvin(0.015)  # 15 mK bath
 tau = 10.0
@@ -141,7 +167,7 @@ from seaqt import evolve, entropy, gibbs_state
 from seaqt.local_seaqt import local_seaqt_dissipator
 from seaqt.dwave import load_schedule, hamiltonian_nqubit, beta_from_kelvin
 
-schedule = load_schedule("path/to/..._annealing_schedule.xlsx")
+schedule = load_schedule("schedules/09-1265A-C_Advantage_system5_3_annealing_schedule.xlsx")
 H = hamiltonian_nqubit(schedule, h=[0.6, -0.4], J={(0, 1): 0.5}, t_anneal=20.0)
 beta_r = beta_from_kelvin(0.015)  # 15 mK reservoir
 tau_a = tau_b = 10.0  # >= ~10 ns recommended -- see "gotchas" (positivity)
@@ -213,7 +239,7 @@ print("final entropy =", entropy(result.rho[-1]))
   for the regression check, and `seaqt/local_seaqt.py`'s module docstring
   for the full writeup.
 
-## What the demos show
+## What the early demos show (1 and 2 qubits)
 
 - `one_qubit_dwave_bath.py` (1 qubit, real D-Wave schedule): at D-Wave's
   actual operating temperature the final Ising coefficient `B(1)` is much
@@ -240,11 +266,3 @@ print("final entropy =", entropy(result.rho[-1]))
   `bath_dissipator`, the free-energy panel is **not** guaranteed monotonic
   under this dynamics (confirmed empirically: it can rise before falling)
   and is shown only as a raw diagnostic, not a convergence claim.
-
-## Next steps
-
-- Explore state- or schedule-dependent `τ(ρ, t)` rather than a constant
-  relaxation time.
-
-- Compare against real D-Wave hardware results for a small problem
-  instance, once available.

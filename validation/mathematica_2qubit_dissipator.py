@@ -3,7 +3,7 @@ Mathematica notebook, plus a numerical comparison against the dissipators
 already implemented in this repo (seaqt/local_seaqt_n.py).
 
 Source file (external to this repo, not copied here -- thesis material):
-    C:\\Users\\andre\\OneDrive\\Documentos\\Maestria\\Tesis\\Codigos\\2-qubit_dynamics.nb
+    2-qubit_dynamics.nb
 (Mathematica 13.3 .nb, plain-text/box-notation, 2637 lines.) Definitions
 below were read directly and verified line-by-line against that file
 (line numbers refer to that .nb, not this file):
@@ -72,7 +72,12 @@ comparison at the bottom runs both and shows how much it matters.
 """
 from __future__ import annotations
 
+import os
+import sys
+
 import numpy as np
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from seaqt.core import Operator, hermitize, matrix_log
 from seaqt.local_seaqt_n import (

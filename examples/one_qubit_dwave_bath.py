@@ -30,9 +30,9 @@ from seaqt import bath_dissipator, entropy, evolve, free_energy, gibbs_state, po
 from seaqt.dwave import beta_from_kelvin, hamiltonian_1qubit, load_schedule  # noqa: E402
 from seaqt.operators import basis_labels  # noqa: E402
 
-DEFAULT_SCHEDULE = (
-    r"C:\Users\andre\OneDrive\Documentos\Maestría\Julich\codigos"
-    r"\09-1265A-C_Advantage_system5_3_annealing_schedule.xlsx"
+DEFAULT_SCHEDULE = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "schedules", "09-1265A-C_Advantage_system5_3_annealing_schedule.xlsx",
 )
 
 

@@ -51,7 +51,7 @@ separate-reservoir-term construction to "a colleague's Mathematica
 notebook" -- that attribution was made without ever opening the notebook
 and turned out to be wrong. Reading the actual file (2-qubit_dynamics.nb)
 and translating its `dissp`/`disspSingle` routines directly
-(experiments/dissipator_comparison/mathematica_2qubit_dissipator.py)
+(validation/mathematica_2qubit_dissipator.py)
 shows no beta_R or reservoir term anywhere in it: both A and B relax
 toward a SELF-CONSISTENT per-qubit (alpha, beta) fixed by their own
 (Gamma, sigma_es), exactly the isolated/no-reservoir model below. Once an

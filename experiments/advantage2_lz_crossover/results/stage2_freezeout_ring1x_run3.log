@@ -1,6 +1,0 @@
-ring1x: 8 t_a x 3 tau x 2 s_f x 1 T; 320 done, 48 to go on 11 workers
-  10/48  134s elapsed, ETA 511s
-  20/48  148s elapsed, ETA 207s
-  30/48  151s elapsed, ETA 90s
-  40/48  152s elapsed, ETA 30s
-  48/48  153s elapsed, ETA 0s

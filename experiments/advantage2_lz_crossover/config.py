@@ -3,11 +3,9 @@ Landau-Zener crossover experiment -- coherence vs J and t_anneal on a
 6-qubit ring/chain, following King et al. 2022 (arXiv:2202.05847v2).
 
 SOLVER_NAME and SCHEDULE_PATH are both filled in and were used end-to-end
-for the exploratory and refinement hardware runs (see README.md's
-"Findings" and "Status" sections) -- Advantage2_system1 is currently in
-maintenance (not visible via the API as of this writing), so re-running
-anything here needs that access restored first; the code itself needs no
-changes when it comes back.
+for the hardware runs (see README.md's "Findings" and "Status" sections).
+Re-running anything on the QPU needs access to Advantage2_system1; analysing
+the results already in results/ does not.
 
 Target-energy -> dimensionless-J conversion (corrected)
 ---------------------------------------------------------------------------
@@ -47,19 +45,15 @@ from pathlib import Path
 # Advantage2 solver at JUPSI. Only Advantage2_system1 is visible on this
 # token (no Advantage2_system2 -- confirmed by listing all solvers); no
 # region filter needed for this one. Credentials (token) live in the local
-# dwave-cloud-client config file, NOT here -- see
-# C:\Users\andre\AppData\Local\dwavesystem\dwave\dwave.conf (outside the
-# repo, never committed).
+# dwave-cloud-client config file (dwave.conf), outside the repo -- never
+# commit a token.
 # ---------------------------------------------------------------------------
 SOLVER_NAME = "Advantage2_system1"
 
 # ---------------------------------------------------------------------------
 # Real Advantage2_system1 schedule export (A(s)/B(s) vs s)
 # ---------------------------------------------------------------------------
-SCHEDULE_PATH = (
-    r"C:\Users\andre\OneDrive\Documentos\Maestría\Julich\codigos"
-    r"\09-1312A-N_Advantage2_system1_annealing_schedule.xlsx"
-)
+SCHEDULE_PATH = str(Path(__file__).resolve().parents[2] / "schedules" / "09-1312A-N_Advantage2_system1_annealing_schedule.xlsx")
 
 # ---------------------------------------------------------------------------
 # Physical operating temperature (measured, not the datasheet-generic value

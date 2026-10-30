@@ -11,5 +11,3 @@ experiments/advantage2_lz_crossover/results/*run*.log
 experiments/advantage2_lz_crossover/results/*.err
 # the chip campaign log is committed gzipped (chip_campaign_log.csv.gz); the plain csv is the live, appendable copy
 experiments/advantage2_lz_crossover/results/chip_campaign_log.csv
-# the Overleaf upload bundle is rebuilt from presentation/main.tex and presentation/figures/
-presentation/*.zip

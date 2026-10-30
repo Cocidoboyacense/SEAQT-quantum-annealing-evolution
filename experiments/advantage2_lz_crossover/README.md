@@ -12,17 +12,19 @@ Landau-Zener formula computed from Advantage2's real calibration data, and
 
 The question: how far does SEAQT get in predicting what Advantage2_system1 does on small problems, and where does it
 fail? The detailed story, with every number and figure, is in `notebooks/seaqt_annealing_walkthrough.ipynb`, sections
-16-16.11; the talk is in `presentation/main.tex`. "Ideal case" below = closed SEAQT (exact unitary evolution).
+16-16.11. Which file holds what, with columns and conventions: [`DATA.md`](DATA.md). "Ideal case" below = closed SEAQT
+(exact unitary evolution, von Neumann); "global" and "local" are SEAQT's non-composite and composite forms.
 
 | Result | Where |
 |---|---|
 | The simulation reproduces King et al.'s Landau-Zener rate with no fit parameters (ratio 0.993; done with the Advantage_system5 schedule, the formula computed from the same schedule) | notebook 15 |
 | On the chip: coherent rise, an anti-Kibble-Zurek fall of $P_{GS}$ (regime II, minimum at 2-6 us) and a recovery; dense shapes saturate; frustrated shapes differ with the sign of J | exploratory campaign, 16.3 |
 | The ideal case follows the shape of the coherent regime, but the hardware's $1-P$ is 1.4-1.9x higher, on every one of 616 placements; the ideal case misses the floor entirely | 16.4, 16.9 |
+| As a ratio, the coherent excess is about 1.5x (median over shapes; 10-90% 1.36-2.20) and does **not** shrink with $J$ (median 1.5x at $J=1\times$, 1.9x at 3.25-4x); the difference $P_{hw}-P_{ideal}$ only shrinks because both probabilities approach 1. Chip regions agree within ~9%; placements within 7-12% | `coherent_excess_ratio.py` |
 | The data are reliable: no crosstalk between placements, take-to-take variation = shot noise at short $t_a$, a chip-wide floor drift of 10-17% at long $t_a$, readout <= 1.9e-4 | 16.9, 16.10 |
 | A global bath switched off at the crossing $s_c$, or the local SEAQT dissipator, bring the floor from errors of ~100x to 1.2-3x; neither fits every problem | 16.5-16.8 |
 | $\tau$ is pinned to a few % within a problem, but is not a property of the chip (global: factor 1.6 between problems; local: >10x). A fixed relaxation budget per unit of $s$ fits the global model in-sample, but a **pre-registered** prediction for the ring 2.5x (commit 6a0a6dc) failed | 16.10, 16.11 |
-| The hardware's thermal error grows sublinearly, $t_a^{0.70-0.87}$, with the same exponent in every placement; no model has that shape (global ~2.8 or ~0, local 1.0). Hardware and both models make only minimum-order errors | 16.10, 16.11 |
+| The hardware's thermal error grows sublinearly, $t_a^{0.70-0.87}$, with the same exponent in every placement; no model has that shape (global ~2.8 with constant $\tau$, ~0 with the fixed budget; local 1.0). Hardware and both models make only minimum-order errors | 16.10, 16.11 |
 
 Open: what produces the sublinear growth (a distribution of relaxation rates, low-frequency noise); which single-domain
 states the chip populates (needs bitstrings); the link to a topological speed-limit bound on $\tau$.
@@ -456,7 +458,7 @@ available in this repo; parked (not abandoned) in favor of other work:
   already substantial at the shortest measurable `t_a`, not something that
   visibly accumulates with more time for dissipation to act).
 
-See also `experiments/advantage_system4_lz_crossover/` -- the same
+See also `archive/advantage_system4_lz_crossover/` -- the same
 experiment run on `Advantage_system4` (older Pegasus-generation chip) as a
 parallel comparison while Advantage2_system1 is unavailable; that run's
 `a_empirical/a_theory` pattern is much less consistent (9/10 >1 but ranging
